@@ -1,5 +1,5 @@
-# PenlPalApp2.0
-Live code for actual app. Ver 2.3
+# PenPalApp
+Live code for actual app. Ver 2.4
 
 App runs smoothly with no issues at the moment. 
 
