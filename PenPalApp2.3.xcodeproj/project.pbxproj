@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B8134FD01AE216CC00A921B8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B8134FCF1AE216CC00A921B8 /* libz.dylib */; };
+		FAA7BFF31B05122C00B2A694 /* BirthdatePage.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7BFF21B05122C00B2A694 /* BirthdatePage.m */; };
 		FAE92E081ADB005D006A1A72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE92E071ADB005D006A1A72 /* main.m */; };
 		FAE92E0B1ADB005D006A1A72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE92E0A1ADB005D006A1A72 /* AppDelegate.m */; };
 		FAE92E0E1ADB005D006A1A72 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE92E0D1ADB005D006A1A72 /* FirstViewController.m */; };
@@ -36,6 +37,8 @@
 
 /* Begin PBXFileReference section */
 		B8134FCF1AE216CC00A921B8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		FAA7BFF11B05122C00B2A694 /* BirthdatePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdatePage.h; sourceTree = "<group>"; };
+		FAA7BFF21B05122C00B2A694 /* BirthdatePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdatePage.m; sourceTree = "<group>"; };
 		FAE92E021ADB005D006A1A72 /* PenPalApp2.3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PenPalApp2.3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE92E061ADB005D006A1A72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAE92E071ADB005D006A1A72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -125,6 +128,8 @@
 				FAE92E401ADC1ED8006A1A72 /* SignupPage.m */,
 				FAE92E421ADC67BF006A1A72 /* SignupOptions.h */,
 				FAE92E431ADC67BF006A1A72 /* SignupOptions.m */,
+				FAA7BFF11B05122C00B2A694 /* BirthdatePage.h */,
+				FAA7BFF21B05122C00B2A694 /* BirthdatePage.m */,
 				FAE92E151ADB005E006A1A72 /* Images.xcassets */,
 				FAE92E171ADB005E006A1A72 /* LaunchScreen.xib */,
 				FAE92E051ADB005D006A1A72 /* Supporting Files */,
@@ -261,6 +266,7 @@
 			files = (
 				FAE92E301ADB0193006A1A72 /* MainView.m in Sources */,
 				FAE92E411ADC1ED8006A1A72 /* SignupPage.m in Sources */,
+				FAA7BFF31B05122C00B2A694 /* BirthdatePage.m in Sources */,
 				FAE92E441ADC67BF006A1A72 /* SignupOptions.m in Sources */,
 				FAE92E3B1ADB0A87006A1A72 /* LoginPage.m in Sources */,
 				FAE92E3E1ADBFACF006A1A72 /* ForgotLoginInfo.m in Sources */,

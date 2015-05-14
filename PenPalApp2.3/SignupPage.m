@@ -8,6 +8,7 @@
 
 #import "SignupPage.h"
 #import "SignupOptions.h"
+#import "BirthdatePage.h"
 
 #include <ifaddrs.h>
 #include <arpa/inet.h>
@@ -29,6 +30,7 @@ UITextField *birthTextField = nil;
 UIButton *genderButton = nil;
 UIButton *countryButton = nil;
 UIButton *regionButton = nil;
+UIButton *birthButton = nil;
 
 @interface SignupPage ()
 @property (nonatomic, strong) NSMutableData *responseData;
@@ -41,16 +43,14 @@ UIButton *regionButton = nil;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+
     
-    
-    float width = 300;
+    float width = self.view.frame.size.width - 15;
     float height = 38;
     float xPos = 15;
     float yPos = 3;
     
-    float buttonWidth = 300;
+    float buttonWidth =  self.view.frame.size.width;
     float buttonHeight = 28;
     float buttonX = (self.view.frame.size.width - buttonWidth)/2;
 
@@ -118,7 +118,7 @@ UIButton *regionButton = nil;
     emailTextField.delegate = self;
     
     
-  
+  /*
 
     birthTextField = [[UITextField alloc] initWithFrame:CGRectMake(xPos, yPos, width, height)];
     birthTextField.borderStyle = UITextBorderStyleRoundedRect;
@@ -133,6 +133,14 @@ UIButton *regionButton = nil;
     birthTextField.borderStyle = UITextBorderStyleNone;
     birthTextField.tag = 104;
     birthTextField.delegate = self;
+    */
+    
+    birthButton = [[UIButton alloc] initWithFrame: CGRectMake(buttonX, yPos + 5, buttonWidth, buttonHeight)];
+    [birthButton setTitleColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0] forState: UIControlStateNormal];
+    [birthButton setTitleColor:[UIColor blueColor] forState: UIControlStateHighlighted];
+    [birthButton setTitle:@"Select Brithdate" forState:UIControlStateNormal];
+    [birthButton setTag:104];
+    [birthButton addTarget:self action:@selector(actionBTNBday:) forControlEvents:UIControlEventTouchUpInside];
     
     
     genderButton = [[UIButton alloc] initWithFrame: CGRectMake(buttonX, yPos + 5, buttonWidth, buttonHeight)];
@@ -158,6 +166,29 @@ UIButton *regionButton = nil;
     [regionButton setTag:107];
     [regionButton addTarget:self action:@selector(actionBTN:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    mainView = [[UITableView alloc] initWithFrame:CGRectMake(0, 72, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
+    
+    mainView.delegate = self;
+    mainView.dataSource = self;
+    
+    [self.view addSubview:mainView];
+    
+    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 28, self.view.frame.size.width, 44)];
+    [navBar setTintColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0]];
+    [self.view addSubview:navBar];
+    
+    
+    
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
+    
+    UIBarButtonItem *submitItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Up" style:UIBarButtonItemStylePlain target:self action:@selector(submitButton)];
+    
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:nil];
+    [navItem setLeftBarButtonItem:cancelItem animated:YES];
+    [navItem setRightBarButtonItem:submitItem animated:YES];
+    //[navItem setTitle:@"Signup"];
+    [navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
 
     
     
@@ -166,6 +197,10 @@ UIButton *regionButton = nil;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
+    if (![gV_bday isEqualToString:@""] && gV_bday) {
+        [birthButton setTitle:gV_bday forState:UIControlStateNormal];
+    }
     
     // set button with user data
     NSString* Gender_text = [[NSUserDefaults standardUserDefaults] stringForKey:@"Gender_text"];
@@ -282,7 +317,7 @@ UIButton *regionButton = nil;
     if (indexPath.section == 2) {
         switch (indexPath.row) {
             case 0:
-                [cell addSubview:birthTextField];
+                [cell addSubview:birthButton];
                 break;
             default:
                 break;
@@ -325,7 +360,7 @@ UIButton *regionButton = nil;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    mainView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -375,6 +410,8 @@ UIButton *regionButton = nil;
 
     
 }
+
+
 
 - (NSString *)getIPAddress:(BOOL)preferIPv4
 {
@@ -501,7 +538,7 @@ UIButton *regionButton = nil;
     NSString *IP = [self getIPAddress:true];
     
     self.responseData = [NSMutableData data];
-    NSString *post = [NSString stringWithFormat:@"p_chk=key&device=1&username=%@&fullname=%@&user_email=%@&country=%@&region=%@&password=%@&gender=%@&birthdate=%@&IP=%@",usernameTextField.text,nameTextField.text,emailTextField.text,Country,Region,passwordTextField.text,Gender,birthTextField.text,IP];
+    NSString *post = [NSString stringWithFormat:@"p_chk=key&device=1&username=%@&fullname=%@&user_email=%@&country=%@&region=%@&password=%@&gender=%@&birthdate=%@&IP=%@",usernameTextField.text,nameTextField.text,emailTextField.text,Country,Region,passwordTextField.text,Gender,gV_bday,IP];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding]; // NSASCIIStringEncoding NSUTF8StringEncoding
     //NSURLRequest NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
@@ -524,6 +561,12 @@ UIButton *regionButton = nil;
     
     SignupOptions *signupOptions = (SignupOptions *) [self.storyboard instantiateViewControllerWithIdentifier:@"signupOptions"];
     [self presentViewController:signupOptions animated:YES completion:nil];
+}
+
+-(void)actionBTNBday:(id)sender{
+
+    BirthdatePage *birthdatePage = (BirthdatePage *) [self.storyboard instantiateViewControllerWithIdentifier:@"birthdatePage"];
+    [self presentViewController:birthdatePage animated:YES completion:nil];
 }
 
 
@@ -729,7 +772,7 @@ NSMutableString *filteredPhoneStringFromStringWithFilter(NSString *string, NSStr
 {
 
     
-    UITextField *txtfld=(UITextField*)[self.tableView viewWithTag:textField.tag+1];
+    UITextField *txtfld=(UITextField*)[mainView viewWithTag:textField.tag+1];
     
     switch (textField.tag) {
         case 100:
@@ -737,7 +780,7 @@ NSMutableString *filteredPhoneStringFromStringWithFilter(NSString *string, NSStr
             
         {
             NSIndexPath *newIndex =[NSIndexPath indexPathForRow:0 inSection:1];
-            [self.tableView scrollToRowAtIndexPath:newIndex atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+            [mainView scrollToRowAtIndexPath:newIndex atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
             [txtfld becomeFirstResponder];
             
         }
@@ -760,7 +803,7 @@ NSMutableString *filteredPhoneStringFromStringWithFilter(NSString *string, NSStr
               
             
                 NSIndexPath *newIndex =[NSIndexPath indexPathForRow:1 inSection:0];
-                [self.tableView scrollToRowAtIndexPath:newIndex atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+                [mainView scrollToRowAtIndexPath:newIndex atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
                 [txtfld becomeFirstResponder];
                 
             }
@@ -779,7 +822,7 @@ NSMutableString *filteredPhoneStringFromStringWithFilter(NSString *string, NSStr
             {
               
                 NSIndexPath *newIndex =[NSIndexPath indexPathForRow:0 inSection:3];
-                [self.tableView scrollToRowAtIndexPath:newIndex atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+                [mainView scrollToRowAtIndexPath:newIndex atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
                 [txtfld becomeFirstResponder];
                 
             }
@@ -798,7 +841,7 @@ NSMutableString *filteredPhoneStringFromStringWithFilter(NSString *string, NSStr
             {
                 //data.email=textField.text;
                 NSIndexPath *newIndex =[NSIndexPath indexPathForRow:0 inSection:4];
-                [self.tableView scrollToRowAtIndexPath:newIndex atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+                [mainView scrollToRowAtIndexPath:newIndex atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
                 [txtfld becomeFirstResponder];
             }
             else

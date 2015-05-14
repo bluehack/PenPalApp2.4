@@ -25,17 +25,14 @@ UILabel *loginErrorLable = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
     
     
-    float width = 300;
+    float width = self.view.frame.size.width - 15;
     float height = 38;
     float xPos = 14;
     float yPos = 4;
     
-    float buttonWidth = 300;
+    float buttonWidth = self.view.frame.size.width;
     float buttonHeight = 28;
     float buttonX = (self.view.frame.size.width - buttonWidth)/2;
     
@@ -85,6 +82,35 @@ UILabel *loginErrorLable = nil;
     [loginErrorLable setFont:[UIFont fontWithName:@"Helvetica" size:16]];
     [loginErrorLable setBackgroundColor:[UIColor clearColor]];
     
+    mainView = [[UITableView alloc] initWithFrame:CGRectMake(0, 72, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
+    
+    mainView.delegate = self;
+    mainView.dataSource = self;
+  
+    [self.view addSubview:mainView];
+    
+    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 28, self.view.frame.size.width, 44)];
+    [navBar setTintColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0]];
+    [self.view addSubview:navBar];
+    
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
+    
+    UIBarButtonItem *loginItem = [[UIBarButtonItem alloc] initWithTitle:@"Log In" style:UIBarButtonItemStylePlain target:self action:@selector(login)];
+    
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:nil];
+    [navItem setLeftBarButtonItem:cancelItem animated:YES];
+    [navItem setRightBarButtonItem:loginItem animated:YES];
+    [navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
+    
+    /*
+    UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont fontWithName:@"Helvetica-Bold" size: 30.0];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextColor:[UIColor whiteColor]];
+    [label setText:self.title];
+    [label sizeToFit];
+    [currentItem setTitleView:label];
+    */
 
     
 }
@@ -292,7 +318,7 @@ UILabel *loginErrorLable = nil;
     
 
     
-    UITextField *txtfld=(UITextField*)[self.tableView viewWithTag:textField.tag+1];
+    UITextField *txtfld=(UITextField*)[mainView viewWithTag:textField.tag+1];
     
     switch (textField.tag) {
         case 200:
@@ -346,7 +372,7 @@ return YES;
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    mainView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
 }
 
 /*

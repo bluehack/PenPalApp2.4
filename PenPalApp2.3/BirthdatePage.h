@@ -1,0 +1,18 @@
+//
+//  BirthdatePage.h
+//  PenPalApp2.3
+//
+//  Created by Computer on 5/13/15.
+//  Copyright (c) 2015 Computer. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+extern NSString *gV_bday;
+
+@interface BirthdatePage : UIViewController{
+    UITableView *mainView;
+    UIDatePicker *birthdate;
+}
+
+@end

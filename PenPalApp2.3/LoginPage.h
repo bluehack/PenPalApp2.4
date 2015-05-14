@@ -14,14 +14,12 @@ extern UIButton *forgotButton;
 extern UILabel *loginErrorLable;
 
 @interface LoginPage : UIViewController<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource> {
-    
+    UITableView *mainView;
 }
 
 -(IBAction) cancelButton;
 -(IBAction) forgotLoginInfo;
 -(IBAction) login;
 
-
-@property (strong, nonatomic) IBOutlet UITableView  *tableView;
 
 @end

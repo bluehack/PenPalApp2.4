@@ -18,9 +18,10 @@ extern UITextField *birthTextField;
 extern UIButton *genderButton;
 extern UIButton *countryButton;
 extern UIButton *regionButton;
+extern UIButton *birthButton;
 
 @interface SignupPage : UIViewController<UIAlertViewDelegate, UITextFieldDelegate,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,NSURLConnectionDelegate>{
-    //NSMutableData *_responseData;
+    UITableView *mainView;
     
 }
 
@@ -28,6 +29,5 @@ extern UIButton *regionButton;
 - (IBAction)submitButton;
 //@property(nonatomic,strong)ServerResponse *serverResponse;
 
-@property (weak, nonatomic) IBOutlet UITableView  *tableView;
 
 @end

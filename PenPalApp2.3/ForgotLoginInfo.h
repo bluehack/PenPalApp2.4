@@ -12,12 +12,11 @@ extern UITextField *forgotTextField;
 extern UILabel *forgotLabel;
 
 @interface ForgotLoginInfo : UIViewController<UIAlertViewDelegate, UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>{
-    
+    UITableView *mainView;
 }
 
 - (IBAction)cancelButton;
 - (IBAction)submitButton;
 
-@property (strong, nonatomic) IBOutlet UITableView  *tableView;
 
 @end

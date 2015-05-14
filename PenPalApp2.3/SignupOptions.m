@@ -13,8 +13,10 @@ NSUInteger gV_region = 0;
 NSString *gV_region_list = @"";
 NSString *gV_city_list = @"";
 NSUInteger countryAtIndex = 0;
+NSArray *gV_regions = nil;
 
 @interface SignupOptions ()
+@property (nonatomic, strong) NSMutableData *responseData;
 
 @property(nonatomic,strong)NSMutableArray * dictCountryAndCode;
 @property(nonatomic,strong)NSMutableArray *alphabetsArray;
@@ -22,16 +24,14 @@ NSUInteger countryAtIndex = 0;
 @end
 
 @implementation SignupOptions
-@synthesize navTitle;
+@synthesize responseData = _responseData;
+
 //@synthesize tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
-    [self setupIndex ];
+    [self setupIndex];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -40,6 +40,30 @@ NSUInteger countryAtIndex = 0;
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //[self performSelector:@selector(doScrolling) withObject:nil afterDelay:0.3];
+    
+    
+    mainView = [[UITableView alloc] initWithFrame:CGRectMake(0, 72, self.view.frame.size.width, self.view.frame.size.height - 72) ];
+    
+    mainView.delegate = self;
+    mainView.dataSource = self;
+    
+    [self.view addSubview:mainView];
+    
+    navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 28, self.view.frame.size.width, 44)];
+    [navBar setTintColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0]];
+    [self.view addSubview:navBar];
+    
+    
+    
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
+    
+    
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:nil];
+    [navItem setLeftBarButtonItem:cancelItem animated:YES];
+    [navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
+    
+    
+
     
 }
 
@@ -50,9 +74,53 @@ NSUInteger countryAtIndex = 0;
 
 -(void)viewDidAppear:(BOOL)animated{
     
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    gV_region = 0;
+    gV_regions = nil;
+     [mainView reloadData];
+}
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    //NSLog(@"didReceiveResponse");
+    [self.responseData setLength:0];
+}
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [self.responseData appendData:data];
+}
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"didFailWithError");
+    //NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // convert to JSON
+    NSError *myError = nil;
+    NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
     
+    
+    NSArray *res_arr = [res objectForKey:@"data"];
+    NSDictionary *real_res = [res_arr objectAtIndex:0];
+    NSString *code = [real_res objectForKey:@"code"];
+    NSArray *regions = [real_res objectForKey:@"regions"];
+    NSString *success = [real_res objectForKey:@"success"];
+    
+    if ([code isEqualToString:@"0"]) {
+        gV_region = [regions count];
+        gV_regions = regions;
+    }
+    else{
+        gV_region = 0;
+        gV_regions = nil;
+    }
+    
+
+    [mainView reloadData];
+ 
     
 }
+
 
 -(void)viewWillAppear:(BOOL)animated{
     
@@ -61,30 +129,31 @@ NSUInteger countryAtIndex = 0;
     switch (pageListID) {
         case 105:
         {
-            navTitle.topItem.title = NSLocalizedString(@"Gender", nil);
+            navBar.topItem.title = NSLocalizedString(@"Gender", nil);
             break;
         }
         case 106:
         {
-            navTitle.topItem.title = NSLocalizedString(@"Country", nil);
+            navBar.topItem.title = NSLocalizedString(@"Country", nil);
             break;
         }
         case 107:
         {
-            navTitle.topItem.title = NSLocalizedString(@"Region", nil);
-            NSString *Country = [[NSUserDefaults standardUserDefaults] stringForKey:@"Country"];
-            NSString *urlString = [NSString stringWithFormat:@"http://networklift.com/penpalapp.php?country=%@", Country];
-            NSError *error = nil;
-            NSHTTPURLResponse *response = nil;
-            NSURLRequest *request = [NSURLRequest
-                                     requestWithURL:[NSURL URLWithString:urlString]
-                                     cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                     timeoutInterval:5.0];
-            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            gV_region_list = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            navBar.topItem.title = NSLocalizedString(@"Region", nil);
             
-            NSArray* regCountArr = [gV_region_list componentsSeparatedByString: @","];
-            gV_region = [regCountArr count];
+            self.responseData = [NSMutableData data];
+  
+            
+            NSString *Country = [[NSUserDefaults standardUserDefaults] stringForKey:@"Country"];
+            NSString *finString = [NSString stringWithFormat:@"http://45.55.157.207/python/Locations/regions.py?country=%@", Country];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:finString]];
+            [request setHTTPMethod:@"GET"];
+            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            //[request setHTTPBody:postData];
+            NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+            
+            
+           
             break;
         }
         default:
@@ -188,13 +257,17 @@ NSUInteger countryAtIndex = 0;
     NSInteger pageListID = [[NSUserDefaults standardUserDefaults] integerForKey:@"pageListID"];
     
     NSString* listData = @"";
+    //NSArray* parts = nil; //[listData componentsSeparatedByString: @","];
     
     switch (pageListID) {
         case 105:
         {
-            listData = NSLocalizedString(@"Male,Female", nil); //@"Male,Female";
+            listData = NSLocalizedString(@"Male,Female", nil); 
             NSString *Gender = [[NSUserDefaults standardUserDefaults] stringForKey:@"Gender"];
             NSIndexPath *path = [NSIndexPath indexPathForRow:[Gender intValue] inSection:0];
+            NSArray* parts = [listData componentsSeparatedByString: @","];
+            cell.textLabel.text = [parts objectAtIndex:indexPath.row];
+            
             if([indexPath isEqual:path] && [Gender length] != 0){cell.accessoryType = UITableViewCellAccessoryCheckmark;}
             else{cell.accessoryType = UITableViewCellAccessoryNone;}
             break;
@@ -206,12 +279,12 @@ NSUInteger countryAtIndex = 0;
             NSDictionary *dict = ((NSDictionary *)[self.indexArray objectAtIndex:indexPath.section]);
             
             
-            NSLog(@" dictionary  :%@",dict);
-            NSLog(@"dict with key vlaue :%@",[dict objectForKey:[[dict allKeys]objectAtIndex:0]]);
+           // NSLog(@" dictionary  :%@",dict);
+           // NSLog(@"dict with key vlaue :%@",[dict objectForKey:[[dict allKeys]objectAtIndex:0]]);
             
             listData=[[dict objectForKey:[[dict allKeys]objectAtIndex:0]] componentsJoinedByString:@","];
-            
-            
+            NSArray* parts = [listData componentsSeparatedByString: @","];
+            cell.textLabel.text = [parts objectAtIndex:indexPath.row];
             
             NSString *Country = [[NSUserDefaults standardUserDefaults] stringForKey:@"Country"];
             NSIndexPath *path = [NSIndexPath indexPathForRow:[Country intValue] inSection:0];
@@ -224,6 +297,8 @@ NSUInteger countryAtIndex = 0;
         {
             // will need to make sub switch or load from web
             listData = NSLocalizedString(gV_region_list, nil);
+            NSArray* parts = gV_regions; //[listData componentsSeparatedByString: @","];
+            cell.textLabel.text = [parts objectAtIndex:indexPath.row];
             NSString *Region = [[NSUserDefaults standardUserDefaults] stringForKey:@"Region"];
             NSIndexPath *path = [NSIndexPath indexPathForRow:[Region intValue] inSection:0];
             if([indexPath isEqual:path] && [Region length] != 0){cell.accessoryType = UITableViewCellAccessoryCheckmark;}
@@ -233,20 +308,25 @@ NSUInteger countryAtIndex = 0;
         case 108:
         {
             listData = NSLocalizedString(@"", nil);
+            NSArray* parts = [listData componentsSeparatedByString: @","];
+            cell.textLabel.text = [parts objectAtIndex:indexPath.row];
             break;
         }
             
-        default:
+        default:{
+            NSArray* parts = 0;
+            cell.textLabel.text = [parts objectAtIndex:indexPath.row];
             break;
+        }
     }
     
 #pragma - might make parts a global veriable
-    NSArray* parts = [listData componentsSeparatedByString: @","];
+    
     
     //countryCount = [@([parts count]) stringValue];
     //countryCount = [NSString stringWithFormat: @"%ld", (long)[parts count]];
     
-    cell.textLabel.text = [parts objectAtIndex:indexPath.row];
+    //cell.textLabel.text = [parts objectAtIndex:indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     
@@ -352,10 +432,11 @@ NSUInteger countryAtIndex = 0;
 
 
 ////
+#pragma - still need to add non a-z
 -(void)setupIndex
 {
     
-    NSString *  listData = NSLocalizedString(@"Afghanistan,Albania,Algeria,American Samoa,Andorra,Angola,Anguilla,Antigua and Barbuda,Argentina,Armenia,Aruba,Australia,Austria,Azerbaijan,Bahamas,Bahrain,Bangladesh,Barbados,Belarus,Belgium,Belize,Benin,Bermuda,Bhutan,Bolivia,Bosnia and Herzegovina,Botswana,Brazil,British Virgin Islands,Brunei,Bulgaria,Burkina Faso,Burundi,Cambodia,Cameroon,Canada,Cape Verde,Cayman Islands,Central African Republic,Chad,Chile,China,Cocos Islands,Colombia,Comoros,Cook Islands,Costa Rica,Croatia,Cuba,Cyprus,Czech Republic,Democratic Republic of the Congo,Denmark,Djibouti,Dominica,Dominican Republic,East Timor,Ecuador,Egypt,El Salvador,Equatorial Guinea,Eritrea,Estonia,Ethiopia,Falkland Islands,Faroe Islands,Fiji,Finland,France,French Guiana,French Polynesia,French Southern Territories,Gabon,Gambia,Georgia,Germany,Ghana,Gibraltar,Greece,Greenland,Grenada,Guadeloupe,Guam,Guatemala,Guernsey,Guinea,Guinea-Bissau,Guyana,Haiti,Honduras,Hong Kong,Hungary,Iceland,India,Indonesia,Iran,Iraq,Ireland,Isle of Man,Israel,Italy,Ivory Coast,Jamaica,Japan,Jersey,Jordan,Kazakhstan,Kenya,Kiribati,Kuwait,Kyrgyzstan,Laos,Latvia,Lebanon,Lesotho,Liberia,Libya,Liechtenstein,Lithuania,Luxembourg,Macao,Macedonia,Madagascar,Malawi,Malaysia,Maldives,Mali,Malta,Marshall Islands,Martinique,Mauritania,Mauritius,Mayotte,Mexico,Micronesia,Moldova,Monaco,Mongolia,Montenegro,Montserrat,Morocco,Mozambique,Myanmar,Namibia,Nepal,Netherlands,Netherlands Antilles,New Caledonia,New Zealand,Nicaragua,Niger,Nigeria,Niue,North Korea,Northern Mariana Islands,Norway,Oman,Pakistan,Palau,Palestinian Territory,Panama,Papua New Guinea,Paraguay,Peru,Philippines,Poland,Portugal,Puerto Rico,Qatar,Republic of the Congo,Reunion,Romania,Russia,Rwanda,Saint Barthélemy,Saint Helena,Saint Kitts and Nevis,Saint Lucia,Saint Martin,Saint Pierre and Miquelon,Saint Vincent and the Grenadines,Samoa,San Marino,Sao Tome and Principe,Saudi Arabia,Senegal,Serbia,Seychelles,Sierra Leone,Singapore,Slovakia,Slovenia,Solomon Islands,Somalia,South Africa,South Korea,Spain,Sri Lanka,Sudan,Suriname,Svalbard and Jan Mayen,Swaziland,Sweden,Switzerland,Syria,Taiwan,Tajikistan,Tanzania,Thailand,Togo,Tonga,Trinidad and Tobago,Tunisia,Turkey,Turkmenistan,Turks and Caicos Islands,Tuvalu,U.S. Virgin Islands,Uganda,Ukraine,United Arab Emirates,United Kingdom,United States,Uruguay,Uzbekistan,Vanuatu,Vatican,Venezuela,Vietnam,Wallis and Futuna,Western Sahara,Yemen,Zambia,Zimbabwe", nil);
+    NSString *listData = NSLocalizedString(@"Afghanistan,Albania,Algeria,American Samoa,Andorra,Angola,Anguilla,Antigua and Barbuda,Argentina,Armenia,Aruba,Australia,Austria,Azerbaijan,Bahamas,Bahrain,Bangladesh,Barbados,Belarus,Belgium,Belize,Benin,Bermuda,Bhutan,Bolivia,Bosnia and Herzegovina,Botswana,Brazil,British Virgin Islands,Brunei,Bulgaria,Burkina Faso,Burundi,Cambodia,Cameroon,Canada,Cape Verde,Cayman Islands,Central African Republic,Chad,Chile,China,Cocos Islands,Colombia,Comoros,Cook Islands,Costa Rica,Croatia,Cuba,Cyprus,Czech Republic,Democratic Republic of the Congo,Denmark,Djibouti,Dominica,Dominican Republic,East Timor,Ecuador,Egypt,El Salvador,Equatorial Guinea,Eritrea,Estonia,Ethiopia,Falkland Islands,Faroe Islands,Fiji,Finland,France,French Guiana,French Polynesia,French Southern Territories,Gabon,Gambia,Georgia,Germany,Ghana,Gibraltar,Greece,Greenland,Grenada,Guadeloupe,Guam,Guatemala,Guernsey,Guinea,Guinea-Bissau,Guyana,Haiti,Honduras,Hong Kong,Hungary,Iceland,India,Indonesia,Iran,Iraq,Ireland,Isle of Man,Israel,Italy,Ivory Coast,Jamaica,Japan,Jersey,Jordan,Kazakhstan,Kenya,Kiribati,Kuwait,Kyrgyzstan,Laos,Latvia,Lebanon,Lesotho,Liberia,Libya,Liechtenstein,Lithuania,Luxembourg,Macao,Macedonia,Madagascar,Malawi,Malaysia,Maldives,Mali,Malta,Marshall Islands,Martinique,Mauritania,Mauritius,Mayotte,Mexico,Micronesia,Moldova,Monaco,Mongolia,Montenegro,Montserrat,Morocco,Mozambique,Myanmar,Namibia,Nepal,Netherlands,Netherlands Antilles,New Caledonia,New Zealand,Nicaragua,Niger,Nigeria,Niue,North Korea,Northern Mariana Islands,Norway,Oman,Pakistan,Palau,Palestinian Territory,Panama,Papua New Guinea,Paraguay,Peru,Philippines,Poland,Portugal,Puerto Rico,Qatar,Republic of the Congo,Reunion,Romania,Russia,Rwanda,Saint Barthélemy,Saint Helena,Saint Kitts and Nevis,Saint Lucia,Saint Martin,Saint Pierre and Miquelon,Saint Vincent and the Grenadines,Samoa,San Marino,Sao Tome and Principe,Saudi Arabia,Senegal,Serbia,Seychelles,Sierra Leone,Singapore,Slovakia,Slovenia,Solomon Islands,Somalia,South Africa,South Korea,Spain,Sri Lanka,Sudan,Suriname,Svalbard and Jan Mayen,Swaziland,Sweden,Switzerland,Syria,Taiwan,Tajikistan,Tanzania,Thailand,Togo,Tonga,Trinidad and Tobago,Tunisia,Turkey,Turkmenistan,Turks and Caicos Islands,Tuvalu,U.S. Virgin Islands,Uganda,Ukraine,United Arab Emirates,United Kingdom,United States,Uruguay,Uzbekistan,Vanuatu,Vatican,Venezuela,Vietnam,Wallis and Futuna,Western Sahara,Yemen,Zambia,Zimbabwe", nil);
     
     
     NSArray* parts = [listData componentsSeparatedByString: @","];
@@ -363,7 +444,7 @@ NSUInteger countryAtIndex = 0;
     
     self.alphabetsArray = [[NSMutableArray alloc] init];
     
-    [self.self.alphabetsArray addObject:@"A"];
+    [self.alphabetsArray addObject:@"A"];
     [self.alphabetsArray addObject:@"B"];
     [self.alphabetsArray addObject:@"C"];
     [self.alphabetsArray addObject:@"D"];
@@ -389,6 +470,7 @@ NSUInteger countryAtIndex = 0;
     [self.alphabetsArray addObject:@"X"];
     [self.alphabetsArray addObject:@"Y"];
     [self.alphabetsArray addObject:@"Z"];
+    [self.alphabetsArray addObject:@"#"];
     self.indexArray = [NSMutableArray new];
     
     for (int i = 0; i < self.alphabetsArray.count; i++)
@@ -398,7 +480,7 @@ NSUInteger countryAtIndex = 0;
             
             NSArray *filteredArr  =[self.dictCountryAndCode sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
             
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains %@", key];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF BEGINSWITH %@", key];
             
             NSArray *list = [filteredArr filteredArrayUsingPredicate:predicate];
             
@@ -406,7 +488,6 @@ NSUInteger countryAtIndex = 0;
             NSDictionary *dict =[NSDictionary dictionaryWithObject:list forKey:key];
             if (filteredArr.count) {
                 [self.indexArray addObject:dict];
-                
             }
             
         }
@@ -416,7 +497,7 @@ NSUInteger countryAtIndex = 0;
         }
         
     }
-    [self.tableView reloadData];
+    [mainView reloadData];
     
     
     

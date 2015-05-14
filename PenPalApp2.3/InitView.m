@@ -60,6 +60,22 @@
     [signupButton addTarget:self action:@selector(signIn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: signupButton];
     
+    //UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,44)];
+    //navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+   // navBar.topItem.title = @"PenPal";
+    //[self.view addSubview:navBar];
+    
+    
+    
+    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 28, self.view.frame.size.width, 44)];
+    [self.view addSubview:navBar];
+
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"PenPal"];
+    [navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
+    
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
