@@ -26,6 +26,8 @@ UILabel *loginErrorLable = nil;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.view.backgroundColor = [UIColor grayColor];
+    
     
     float width = self.view.frame.size.width - 15;
     float height = 38;
@@ -82,25 +84,25 @@ UILabel *loginErrorLable = nil;
     [loginErrorLable setFont:[UIFont fontWithName:@"Helvetica" size:16]];
     [loginErrorLable setBackgroundColor:[UIColor clearColor]];
     
-    mainView = [[UITableView alloc] initWithFrame:CGRectMake(0, 72, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
+    mainView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     
     mainView.delegate = self;
     mainView.dataSource = self;
   
     [self.view addSubview:mainView];
     
-    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 28, self.view.frame.size.width, 44)];
-    [navBar setTintColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0]];
-    [self.view addSubview:navBar];
+   
     
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
     
     UIBarButtonItem *loginItem = [[UIBarButtonItem alloc] initWithTitle:@"Log In" style:UIBarButtonItemStylePlain target:self action:@selector(login)];
     
-    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:nil];
-    [navItem setLeftBarButtonItem:cancelItem animated:YES];
-    [navItem setRightBarButtonItem:loginItem animated:YES];
-    [navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
+    self.view.backgroundColor = [UIColor grayColor];
+    
+
+   
+    self.navigationItem.leftBarButtonItem = cancelItem;
+    self.navigationItem.rightBarButtonItem = loginItem;
     
     /*
     UILabel *label = [[UILabel alloc] init];
@@ -130,8 +132,11 @@ UILabel *loginErrorLable = nil;
 }
 
 -(IBAction) forgotLoginInfo{
-    ForgotLoginInfo *forgot = (ForgotLoginInfo *) [self.storyboard instantiateViewControllerWithIdentifier:@"forgot"];
-    [self presentViewController:forgot animated:YES completion:nil];
+    
+    ForgotLoginInfo *vc = [[ForgotLoginInfo alloc] init];
+    UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:vc2 animated:YES completion:nil];
+    
 }
 
 
@@ -217,7 +222,6 @@ UILabel *loginErrorLable = nil;
 
     
     // post data to db, if login info is good
-    
     
    // [[[self presentingViewController] presentingViewController] dismissViewControllerAnimated:NO completion:nil];
    // [self dismissViewControllerAnimated:YES completion:nil];

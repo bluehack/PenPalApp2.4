@@ -21,34 +21,31 @@ NSString *gV_bday = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     //birthdate.delegate = self;
     //birthdate.dataSource = self;
     
-    birthdate = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 88, self.view.frame.size.width, (self.view.frame.size.height/2.0) )];
+    birthdate = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 80, self.view.frame.size.width, (self.view.frame.size.height/2.0) )];
     birthdate.datePickerMode = UIDatePickerModeDate;
     birthdate.hidden = NO;
     birthdate.date = [NSDate date];
     
     //[birthdate addTarget:self action:@selector(LabelChange:) forControlEvents:UIControlEventValueChanged];
+   
+    
+    //[self.view addSubview:mainView];
+    
     [self.view addSubview:birthdate];
-    
-    [self.view addSubview:mainView];
-    
-    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 28, self.view.frame.size.width, 44)];
-    [navBar setTintColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0]];
-    [self.view addSubview:navBar];
     
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
     
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(doneButton)];
     
-    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:nil];
-    [navItem setLeftBarButtonItem:cancelItem animated:YES];
-    [navItem setRightBarButtonItem:doneItem animated:YES];
-    [navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
     
-    navBar.topItem.title = NSLocalizedString(@"Birthdate", nil);
-    
+    self.navigationItem.title = NSLocalizedString(@"Birthdate", nil);
+    self.navigationItem.leftBarButtonItem = cancelItem;
+    self.navigationItem.rightBarButtonItem = doneItem;
     
 }
 
@@ -58,6 +55,14 @@ NSString *gV_bday = nil;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"This can not be changed after signing up."
+                              message: nil
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+    [alert show];
     
     
     

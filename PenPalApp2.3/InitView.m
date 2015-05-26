@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    self.view.backgroundColor = [UIColor grayColor];
     
     float buttonY = self.view.frame.size.height * .60;
     float buttonWidth = self.view.frame.size.width - 14; // 300
@@ -66,12 +66,7 @@
     //[self.view addSubview:navBar];
     
     
-    
-    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 28, self.view.frame.size.width, 44)];
-    [self.view addSubview:navBar];
-
-    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"PenPal"];
-    [navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
+    self.navigationItem.title = NSLocalizedString(@"PenPal", nil);
     
     
     
@@ -85,15 +80,17 @@
 
 - (IBAction)logIn{
     
-    LoginPage *loginPage = (LoginPage *) [self.storyboard instantiateViewControllerWithIdentifier:@"loginPage"];
-    [self presentViewController:loginPage animated:YES completion:nil];
-    //[self dismissViewControllerAnimated:YES completion:nil];
+    LoginPage *vc = [[LoginPage alloc] init];
+    UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
+    //vc.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self presentViewController:vc2 animated:YES completion:nil];
 }
 
 - (IBAction)signIn{
     
-    SignupPage *signupPage = (SignupPage *) [self.storyboard instantiateViewControllerWithIdentifier:@"signupPage"];
-    [self presentViewController:signupPage animated:YES completion:nil];
+    SignupPage *vc = [[SignupPage alloc] init];
+    UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:vc2 animated:YES completion:nil];
     //[self dismissViewControllerAnimated:YES completion:nil];
 }
 

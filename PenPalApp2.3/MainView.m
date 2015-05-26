@@ -34,8 +34,18 @@
     NSString* loggedIn_check = [[NSUserDefaults standardUserDefaults] stringForKey:@"loggedIn"];
     
     if (![loggedIn_check isEqualToString:@"YES"]) {
-        InitView *initView = (InitView *) [self.storyboard instantiateViewControllerWithIdentifier:@"initView"];
-        [self presentViewController:initView animated:NO completion:nil];
+        
+        InitView *vc = [[InitView alloc] init];
+        UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
+        
+        
+
+        //vc.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        //[self.navigationController pushViewController:vc animated:YES];
+        [self presentViewController:vc2 animated:NO completion:nil];
+        
+        //InitView *initView = (InitView *) [self.storyboard instantiateViewControllerWithIdentifier:@"initView"];
+        //[self presentViewController:initView animated:NO completion:nil];
     }
     
 }

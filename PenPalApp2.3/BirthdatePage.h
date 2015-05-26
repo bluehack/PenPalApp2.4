@@ -10,7 +10,7 @@
 
 extern NSString *gV_bday;
 
-@interface BirthdatePage : UIViewController{
+@interface BirthdatePage : UIViewController <UIAlertViewDelegate>{
     UITableView *mainView;
     UIDatePicker *birthdate;
 }

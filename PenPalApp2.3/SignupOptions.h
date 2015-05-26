@@ -16,7 +16,7 @@ extern NSArray *gV_regions;
 
 @interface SignupOptions : UIViewController<UITableViewDelegate,UITableViewDataSource>{
      UITableView *mainView;
-    UINavigationBar *navBar;
+ 
 }
 
 

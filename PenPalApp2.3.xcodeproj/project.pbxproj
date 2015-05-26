@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		B8134FD01AE216CC00A921B8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B8134FCF1AE216CC00A921B8 /* libz.dylib */; };
 		FAA7BFF31B05122C00B2A694 /* BirthdatePage.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7BFF21B05122C00B2A694 /* BirthdatePage.m */; };
+		FAE0ECD91B13D02100852D5B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE0ECD81B13D02100852D5B /* CoreGraphics.framework */; };
+		FAE0ECDB1B13D02B00852D5B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE0ECDA1B13D02B00852D5B /* UIKit.framework */; };
+		FAE0ECDD1B13D03500852D5B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE0ECDC1B13D03500852D5B /* Foundation.framework */; };
+		FAE0ECE41B13D62300852D5B /* CountriesFlags36px.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE0ECE11B13D62300852D5B /* CountriesFlags36px.xcassets */; };
+		FAE0ECE51B13D62300852D5B /* SLCountryPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE0ECE31B13D62300852D5B /* SLCountryPickerViewController.m */; };
 		FAE92E081ADB005D006A1A72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE92E071ADB005D006A1A72 /* main.m */; };
 		FAE92E0B1ADB005D006A1A72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE92E0A1ADB005D006A1A72 /* AppDelegate.m */; };
 		FAE92E0E1ADB005D006A1A72 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE92E0D1ADB005D006A1A72 /* FirstViewController.m */; };
@@ -39,6 +44,12 @@
 		B8134FCF1AE216CC00A921B8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		FAA7BFF11B05122C00B2A694 /* BirthdatePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdatePage.h; sourceTree = "<group>"; };
 		FAA7BFF21B05122C00B2A694 /* BirthdatePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdatePage.m; sourceTree = "<group>"; };
+		FAE0ECD81B13D02100852D5B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FAE0ECDA1B13D02B00852D5B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FAE0ECDC1B13D03500852D5B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FAE0ECE11B13D62300852D5B /* CountriesFlags36px.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CountriesFlags36px.xcassets; sourceTree = "<group>"; };
+		FAE0ECE21B13D62300852D5B /* SLCountryPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCountryPickerViewController.h; sourceTree = "<group>"; };
+		FAE0ECE31B13D62300852D5B /* SLCountryPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCountryPickerViewController.m; sourceTree = "<group>"; };
 		FAE92E021ADB005D006A1A72 /* PenPalApp2.3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PenPalApp2.3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE92E061ADB005D006A1A72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAE92E071ADB005D006A1A72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -73,6 +84,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAE0ECD91B13D02100852D5B /* CoreGraphics.framework in Frameworks */,
+				FAE0ECDB1B13D02B00852D5B /* UIKit.framework in Frameworks */,
+				FAE0ECDD1B13D03500852D5B /* Foundation.framework in Frameworks */,
 				B8134FD01AE216CC00A921B8 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,9 +101,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FAE0ECE01B13D62300852D5B /* CountryPicker */ = {
+			isa = PBXGroup;
+			children = (
+				FAE0ECE11B13D62300852D5B /* CountriesFlags36px.xcassets */,
+				FAE0ECE21B13D62300852D5B /* SLCountryPickerViewController.h */,
+				FAE0ECE31B13D62300852D5B /* SLCountryPickerViewController.m */,
+			);
+			path = CountryPicker;
+			sourceTree = "<group>";
+		};
 		FAE92DF91ADB005D006A1A72 = {
 			isa = PBXGroup;
 			children = (
+				FAE0ECDC1B13D03500852D5B /* Foundation.framework */,
+				FAE0ECDA1B13D02B00852D5B /* UIKit.framework */,
+				FAE0ECD81B13D02100852D5B /* CoreGraphics.framework */,
 				B8134FCF1AE216CC00A921B8 /* libz.dylib */,
 				FAE92E041ADB005D006A1A72 /* PenPalApp2.3 */,
 				FAE92E211ADB005E006A1A72 /* PenPalApp2.3Tests */,
@@ -130,6 +157,7 @@
 				FAE92E431ADC67BF006A1A72 /* SignupOptions.m */,
 				FAA7BFF11B05122C00B2A694 /* BirthdatePage.h */,
 				FAA7BFF21B05122C00B2A694 /* BirthdatePage.m */,
+				FAE0ECE01B13D62300852D5B /* CountryPicker */,
 				FAE92E151ADB005E006A1A72 /* Images.xcassets */,
 				FAE92E171ADB005E006A1A72 /* LaunchScreen.xib */,
 				FAE92E051ADB005D006A1A72 /* Supporting Files */,
@@ -245,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAE92E141ADB005D006A1A72 /* Main.storyboard in Resources */,
+				FAE0ECE41B13D62300852D5B /* CountriesFlags36px.xcassets in Resources */,
 				FAE92E191ADB005E006A1A72 /* LaunchScreen.xib in Resources */,
 				FAE92E161ADB005E006A1A72 /* Images.xcassets in Resources */,
 			);
@@ -270,6 +299,7 @@
 				FAE92E441ADC67BF006A1A72 /* SignupOptions.m in Sources */,
 				FAE92E3B1ADB0A87006A1A72 /* LoginPage.m in Sources */,
 				FAE92E3E1ADBFACF006A1A72 /* ForgotLoginInfo.m in Sources */,
+				FAE0ECE51B13D62300852D5B /* SLCountryPickerViewController.m in Sources */,
 				FAE92E111ADB005D006A1A72 /* SecondViewController.m in Sources */,
 				FAE92E381ADB04BC006A1A72 /* InitView.m in Sources */,
 				FAE92E0B1ADB005D006A1A72 /* AppDelegate.m in Sources */,

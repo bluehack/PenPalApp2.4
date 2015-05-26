@@ -5,114 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--Init View-->
-        <scene sceneID="5WM-cI-aei">
-            <objects>
-                <viewController storyboardIdentifier="initView" id="Odm-8j-n8U" customClass="InitView" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aMj-of-5Jp"/>
-                        <viewControllerLayoutGuide type="bottom" id="zx7-4Q-TCY"/>
-                    </layoutGuides>
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="b0q-vD-686">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.96499235729999999" green="0.96499235729999999" blue="0.96499235729999999" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YvL-aF-MFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-168" y="-1385.9200000000001"/>
-        </scene>
-        <!--Login Page-->
-        <scene sceneID="sWd-3o-WW4">
-            <objects>
-                <viewController storyboardIdentifier="loginPage" id="lGF-Ts-8A9" customClass="LoginPage" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ct0-vS-fKM"/>
-                        <viewControllerLayoutGuide type="bottom" id="io9-bG-pyC"/>
-                    </layoutGuides>
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="SDD-Pz-C1O">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.96499235729999999" green="0.96499235729999999" blue="0.96499235729999999" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pa2-Fa-vqz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="497.59999999999997" y="-1955.8133333333333"/>
-        </scene>
-        <!--Signup Page-->
-        <scene sceneID="H6c-A1-MlY">
-            <objects>
-                <viewController storyboardIdentifier="signupPage" id="eTf-Oq-E2W" customClass="SignupPage" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xxy-4p-Shx"/>
-                        <viewControllerLayoutGuide type="bottom" id="Xga-tO-PZG"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bYP-Sr-Dph">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.96499235729999999" green="0.96499235729999999" blue="0.96499235729999999" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RR8-O0-xQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="430.93333333333334" y="-972.22666666666669"/>
-        </scene>
-        <!--Signup Options-->
-        <scene sceneID="eFm-HU-e9G">
-            <objects>
-                <viewController storyboardIdentifier="signupOptions" id="2Bh-Ij-cyv" customClass="SignupOptions" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BFi-mO-y0c"/>
-                        <viewControllerLayoutGuide type="bottom" id="Kqb-FJ-RoG"/>
-                    </layoutGuides>
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="hk8-Gi-HB6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.96499235729999999" green="0.96499235729999999" blue="0.96499235729999999" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O7r-Md-BIM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="789.86666666666667" y="-972.22666666666669"/>
-        </scene>
-        <!--Birthdate Page-->
-        <scene sceneID="Rfe-Nb-gqw">
-            <objects>
-                <viewController storyboardIdentifier="birthdatePage" id="nit-JM-IcO" customClass="BirthdatePage" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="obr-On-KyL"/>
-                        <viewControllerLayoutGuide type="bottom" id="ciM-EQ-aHo"/>
-                    </layoutGuides>
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="sSY-Yh-hTH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5kD-G7-GlJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1139.7333333333333" y="-989.26666666666665"/>
-        </scene>
-        <!--Forgot Login Info-->
-        <scene sceneID="Ugf-Kt-Ing">
-            <objects>
-                <viewController storyboardIdentifier="forgot" id="kkR-Jw-53l" customClass="ForgotLoginInfo" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="L3e-Zh-54A"/>
-                        <viewControllerLayoutGuide type="bottom" id="4Oj-z6-XW5"/>
-                    </layoutGuides>
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="rVq-23-tvJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.96499235729999999" green="0.96499235729999999" blue="0.96499235729999999" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TFH-ie-4rA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="862.93333333333328" y="-1955.8133333333333"/>
-        </scene>
         <!--Search-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -132,14 +24,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restart app (Cmd + R), to clear NSUserdefaults." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
-                                <rect key="frame" x="0.0" y="236" width="600" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-ZT-IL2">
-                                <rect key="frame" x="0.0" y="126" width="600" height="30"/>
+                                <rect key="frame" x="-140" y="126" width="600" height="30"/>
                                 <state key="normal" title="Click here to logout">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -147,6 +33,12 @@
                                     <action selector="cancelButton" destination="9pv-A4-QxB" eventType="touchUpInside" id="6cC-35-tuF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restart app (Cmd + R), to clear NSUserdefaults." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
+                                <rect key="frame" x="-140" y="237" width="600" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

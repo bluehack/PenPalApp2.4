@@ -31,6 +31,8 @@ NSArray *gV_regions = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor grayColor];
+    
     [self setupIndex];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -42,27 +44,22 @@ NSArray *gV_regions = nil;
     //[self performSelector:@selector(doScrolling) withObject:nil afterDelay:0.3];
     
     
-    mainView = [[UITableView alloc] initWithFrame:CGRectMake(0, 72, self.view.frame.size.width, self.view.frame.size.height - 72) ];
+    mainView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     mainView.delegate = self;
     mainView.dataSource = self;
     
     [self.view addSubview:mainView];
     
-    navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 28, self.view.frame.size.width, 44)];
-    [navBar setTintColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0]];
-    [self.view addSubview:navBar];
+
     
+
     
+    self.view.backgroundColor = [UIColor grayColor];
     
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
     
-    
-    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:nil];
-    [navItem setLeftBarButtonItem:cancelItem animated:YES];
-    [navBar setItems:[NSArray arrayWithObject:navItem] animated:YES];
-    
-    
+    self.navigationItem.leftBarButtonItem = cancelItem;
 
     
 }
@@ -73,6 +70,22 @@ NSArray *gV_regions = nil;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    
+    NSInteger pageListID = [[NSUserDefaults standardUserDefaults] integerForKey:@"pageListID"];
+    switch (pageListID) {
+        case 105:
+        {
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: @"This can not be changed after signing up."
+                                  message: nil
+                                  delegate: nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+            [alert show];
+           
+            break;
+        }
+    }
     
 }
 
@@ -129,17 +142,17 @@ NSArray *gV_regions = nil;
     switch (pageListID) {
         case 105:
         {
-            navBar.topItem.title = NSLocalizedString(@"Gender", nil);
+            self.navigationItem.title = NSLocalizedString(@"Gender", nil);
             break;
         }
         case 106:
         {
-            navBar.topItem.title = NSLocalizedString(@"Country", nil);
+            self.navigationItem.title = NSLocalizedString(@"Country", nil);
             break;
         }
         case 107:
         {
-            navBar.topItem.title = NSLocalizedString(@"Region", nil);
+            self.navigationItem.title = NSLocalizedString(@"Region", nil);
             
             self.responseData = [NSMutableData data];
   
