@@ -218,7 +218,7 @@ static NSString *CellIdentifier = @"CountryCell";
     }
 
     cell.imageView.image = [UIImage imageNamed:cd[@"code"]];
-    NSLog(@"%@", cd[@"code"]);
+   //NSLog(@"%@", cd[@"code"]);
     return cell;
 }
 
@@ -226,12 +226,25 @@ static NSString *CellIdentifier = @"CountryCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    /*
+    
+    NSInteger rowNumber = 0;
+    
+    for (NSInteger i = 0; i < indexPath.section; i++) {
+        rowNumber += [self tableView:tableView numberOfRowsInSection:i];
+    }
+    
+    rowNumber += indexPath.row;
+    
+    NSLog(@"CC2: %ld", (long)rowNumber);
+    
+     */
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
 
     
-
     if (self.completionBlock) {
         NSDictionary *cd = nil;
         
@@ -241,13 +254,16 @@ static NSString *CellIdentifier = @"CountryCell";
         else {
             cd = _sections[indexPath.section][indexPath.row];
         }
-        self.completionBlock(cd[@"name"],cd[@"code"]);
+        self.completionBlock(cd[@"name"],cd[@"code"]); // [mainView numberOfSections]
         
         [[NSUserDefaults standardUserDefaults] setObject:cd[@"name"] forKey:@"Country_text"];
         
-        //NSUInteger countryIndex = [self.dictCountryAndCode indexOfObject: cell.textLabel.text];
+         NSLog(@"CC: %@", cd[@"code"]);
         
-       // [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",(long)cd] forKey:@"Country"];
+        
+        //NSUInteger countryIndex = [cd indexOfObject: cd[@"code"]];
+        
+       [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",cd[@"code"]] forKey:@"Country"];
         
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"Region_text"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"Region"];
@@ -323,7 +339,6 @@ static NSString *CellIdentifier = @"CountryCell";
     
     return 16;
 }
-
 
 
 @end
