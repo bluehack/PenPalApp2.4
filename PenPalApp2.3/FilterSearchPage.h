@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FilterSearchPage : UIViewController
+@interface FilterSearchPage : UIViewController<UIAlertViewDelegate, UITextFieldDelegate,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,NSURLConnectionDelegate>{
+    UITableView *mainView;
+}
 
 @end
