@@ -10,6 +10,7 @@
 #import "InitView.h"
 #import "MainView.h"
 #import "AppDelegate.h"
+#import "EditProfilePage.h"
 
 @interface ProfileTab ()
 
@@ -30,6 +31,19 @@
     
     self.navigationItem.title = NSLocalizedString(@"Profile", nil);
     
+    UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editButton)];
+    
+
+    self.navigationItem.rightBarButtonItem = editItem;
+    
+}
+
+- (IBAction)editButton{
+    
+    EditProfilePage *vc = [[EditProfilePage alloc] init];
+    UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)logoutButton{

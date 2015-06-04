@@ -19,6 +19,7 @@
 		FAE0ECEE1B1D9EA400852D5B /* NotificationsTab.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE0ECED1B1D9EA400852D5B /* NotificationsTab.m */; };
 		FAE0ECF11B1D9F1300852D5B /* ProfileTab.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE0ECF01B1D9F1300852D5B /* ProfileTab.m */; };
 		FAE0ECF41B1FAFFD00852D5B /* FilterSearchPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE0ECF31B1FAFFD00852D5B /* FilterSearchPage.m */; };
+		FAE0ECF71B2082F000852D5B /* EditProfilePage.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE0ECF61B2082F000852D5B /* EditProfilePage.m */; };
 		FAE92E081ADB005D006A1A72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE92E071ADB005D006A1A72 /* main.m */; };
 		FAE92E0B1ADB005D006A1A72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE92E0A1ADB005D006A1A72 /* AppDelegate.m */; };
 		FAE92E141ADB005D006A1A72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE92E121ADB005D006A1A72 /* Main.storyboard */; };
@@ -63,6 +64,8 @@
 		FAE0ECF01B1D9F1300852D5B /* ProfileTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTab.m; sourceTree = "<group>"; };
 		FAE0ECF21B1FAFFD00852D5B /* FilterSearchPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterSearchPage.h; sourceTree = "<group>"; };
 		FAE0ECF31B1FAFFD00852D5B /* FilterSearchPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterSearchPage.m; sourceTree = "<group>"; };
+		FAE0ECF51B2082F000852D5B /* EditProfilePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfilePage.h; sourceTree = "<group>"; };
+		FAE0ECF61B2082F000852D5B /* EditProfilePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfilePage.m; sourceTree = "<group>"; };
 		FAE92E021ADB005D006A1A72 /* PenPalApp2.3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PenPalApp2.3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE92E061ADB005D006A1A72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAE92E071ADB005D006A1A72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				FAE0ECED1B1D9EA400852D5B /* NotificationsTab.m */,
 				FAE0ECEF1B1D9F1300852D5B /* ProfileTab.h */,
 				FAE0ECF01B1D9F1300852D5B /* ProfileTab.m */,
+				FAE0ECF51B2082F000852D5B /* EditProfilePage.h */,
+				FAE0ECF61B2082F000852D5B /* EditProfilePage.m */,
 				FAE92E121ADB005D006A1A72 /* Main.storyboard */,
 				FAE92E2E1ADB0193006A1A72 /* MainView.h */,
 				FAE92E2F1ADB0193006A1A72 /* MainView.m */,
@@ -308,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAE0ECF71B2082F000852D5B /* EditProfilePage.m in Sources */,
 				FAE92E301ADB0193006A1A72 /* MainView.m in Sources */,
 				FAE0ECE81B1D9E6000852D5B /* SearchTab.m in Sources */,
 				FAE92E411ADC1ED8006A1A72 /* SignupPage.m in Sources */,
