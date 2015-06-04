@@ -8,6 +8,9 @@
 
 #import "LoginPage.h"
 #import "ForgotLoginInfo.h"
+#import "MainView.h"
+#import "InitView.h"
+#import "AppDelegate.h"
 
 
 UITextField *loginNameTextField = nil;
@@ -88,10 +91,10 @@ UILabel *loginErrorLable = nil;
     
     mainView.delegate = self;
     mainView.dataSource = self;
-  
+    
     [self.view addSubview:mainView];
     
-   
+    
     
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
     
@@ -99,21 +102,12 @@ UILabel *loginErrorLable = nil;
     
     self.view.backgroundColor = [UIColor grayColor];
     
-
-   
+    
+    
     self.navigationItem.leftBarButtonItem = cancelItem;
     self.navigationItem.rightBarButtonItem = loginItem;
     
-    /*
-    UILabel *label = [[UILabel alloc] init];
-    label.font = [UIFont fontWithName:@"Helvetica-Bold" size: 30.0];
-    [label setBackgroundColor:[UIColor clearColor]];
-    [label setTextColor:[UIColor whiteColor]];
-    [label setText:self.title];
-    [label sizeToFit];
-    [currentItem setTitleView:label];
-    */
-
+    
     
 }
 
@@ -129,6 +123,7 @@ UILabel *loginErrorLable = nil;
 - (IBAction)cancelButton{
     [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 -(IBAction) forgotLoginInfo{
@@ -188,22 +183,45 @@ UILabel *loginErrorLable = nil;
         [loginPasswordTextField.layer addAnimation:shake forKey:@"position"];
     }
     else{
+        [self.view endEditing:YES];
+        
+        NSString *user_id = [real_res objectForKey:@"user_id"];
+        NSLog(@"User_id : %@",user_id);
+        
+        [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"loggedIn"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        
+        NSMutableArray *viewControllers2 = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+        [viewControllers2 removeObjectAtIndex:0];
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+        [self.navigationController setViewControllers:viewControllers2 animated:NO];
+        
+        
+        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        MainView *vc = [[MainView alloc] init];
+        [appDelegate.window setRootViewController:vc];
+        
+
+        //[[UIApplication sharedApplication].keyWindow setRootViewController: vc];
+  
+     
         
     }
-  
+    
 }
 
 
 - (IBAction)login{
     // might need this
-    //[self.view endEditing:YES];
+    
     
     loginNameTextField.text = loginNameTextField.text;
     loginPasswordTextField.text = loginPasswordTextField.text;
     
     
     
-
+    
     
     self.responseData = [NSMutableData data];
     NSString *post = [NSString stringWithFormat:@"p_chk=key&user=%@&password=%@",loginNameTextField.text,loginPasswordTextField.text];
@@ -215,19 +233,21 @@ UILabel *loginErrorLable = nil;
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-
+    
     
     
     //else
-
+    
     
     // post data to db, if login info is good
     
-   // [[[self presentingViewController] presentingViewController] dismissViewControllerAnimated:NO completion:nil];
-   // [self dismissViewControllerAnimated:YES completion:nil];
     
     
-
+    // [[[self presentingViewController] presentingViewController] dismissViewControllerAnimated:NO completion:nil];
+    // [self dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -239,7 +259,7 @@ UILabel *loginErrorLable = nil;
     
     
     // Return the number of rows in the section.
-
+    
     return 2;
     
     
@@ -267,17 +287,14 @@ UILabel *loginErrorLable = nil;
         default:
             break;
     }
-
     
-    //self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
-    //[self.tableView.tableFooterView setBackgroundColor: [UIColor blackColor]];
-   
+    
     
     
 #pragma - might make parts a global veriable
- 
+    
     [tableView addSubview:forgotButton];
-
+    
     
     //cell.textLabel.text = [parts objectAtIndex:indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -289,7 +306,7 @@ UILabel *loginErrorLable = nil;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger) section
 {
     if (section == 0) {
-
+        
         return loginErrorLable;
     }
     
@@ -300,12 +317,12 @@ UILabel *loginErrorLable = nil;
 {
     if (section == 0)
         return 50;
-
+    
     return tableView.sectionHeaderHeight;
 }
 
 -(void)tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     
 }
 
@@ -314,13 +331,13 @@ UILabel *loginErrorLable = nil;
 {       //__block BOOL doexist=NO;
     
     return false;
-
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     
-
+    
     
     UITextField *txtfld=(UITextField*)[mainView viewWithTag:textField.tag+1];
     
@@ -329,7 +346,7 @@ UILabel *loginErrorLable = nil;
         {   if(textField.text.length>0)
             
         {
-
+            
             [txtfld becomeFirstResponder];
             
         }
@@ -342,7 +359,7 @@ UILabel *loginErrorLable = nil;
             [textField becomeFirstResponder];
             
         }
-
+            
             
         }
             break;
@@ -364,13 +381,13 @@ UILabel *loginErrorLable = nil;
             
         }
             break;
-            default:
-                break;
+        default:
+            break;
     }
-
-//[AppDelegate saveObjectToUserDefault:data withKey:@"userData"];
-
-return YES;
+    
+    //[AppDelegate saveObjectToUserDefault:data withKey:@"userData"];
+    
+    return YES;
     
 }
 
@@ -380,20 +397,20 @@ return YES;
 }
 
 /*
-- (BOOL) textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}*/
+ - (BOOL) textFieldShouldReturn:(UITextField *)textField
+ {
+ [textField resignFirstResponder];
+ return YES;
+ }*/
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

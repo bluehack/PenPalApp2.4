@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "MainView.h"
+#import "InitView.h"
 
 @interface AppDelegate ()
 
@@ -21,23 +23,29 @@
     //[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
    //  (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
-    
-    //-- Set Notification
-    if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
-    {
-        // iOS 8 Notifications
-        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-        
-        [application registerForRemoteNotifications];
-    }
-    else
-    {
-        // iOS < 8 Notifications
-        [application registerForRemoteNotificationTypes:
-         (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
-    }
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor blackColor];
 
-    
+
+    NSString* loggedIn_check = [[NSUserDefaults standardUserDefaults] stringForKey:@"loggedIn"];
+    if (![loggedIn_check isEqualToString:@"YES"]) {
+
+        InitView *vc = [[InitView alloc] init];
+        UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
+        self.window.rootViewController = vc2;
+        NSLog(@"Not logged IN yet");
+        
+        
+    }
+    else{
+        
+        MainView *vc = [[MainView alloc] init];
+        //UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
+        self.window.rootViewController = vc;
+        
+    }
+  
+    [self.window makeKeyAndVisible];
     
     // Override point for customization after application launch.
     return YES;
@@ -45,9 +53,7 @@
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"content---%@", token);
+    NSLog(@"content---");
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

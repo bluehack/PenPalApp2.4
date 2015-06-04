@@ -20,11 +20,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    
     self.view.backgroundColor = [UIColor grayColor];
     
-    float buttonY = self.view.frame.size.height * .60;
-    float buttonWidth = self.view.frame.size.width - 14; // 300
-    float buttonHeight = 45;
+    float buttonY = self.view.frame.size.height * .75;
+    float buttonWidth = self.view.frame.size.width - 20; // 300
+    float buttonHeight = 50;
     float buttonX = (self.view.frame.size.width - buttonWidth)/2;
     
     //[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0]
@@ -45,7 +47,7 @@
     [self.view addSubview: loginButton];
     
     
-    UIButton *signupButton = [[UIButton alloc] initWithFrame: CGRectMake(buttonX, buttonY + 60, buttonWidth, buttonHeight)];
+    UIButton *signupButton = [[UIButton alloc] initWithFrame: CGRectMake(buttonX, buttonY + 65, buttonWidth, buttonHeight)];
     [signupButton setTitleColor:[UIColor blackColor] forState: UIControlStateNormal];
     [signupButton setTitleColor:[UIColor grayColor] forState: UIControlStateHighlighted];
     [signupButton setBackgroundColor:[UIColor whiteColor]];
@@ -73,6 +75,10 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -82,8 +88,16 @@
     
     LoginPage *vc = [[LoginPage alloc] init];
     UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
-    //vc.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self presentViewController:vc2 animated:YES completion:nil];
+    
+   // NSMutableArray *viewControllers2 = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+   // [viewControllers2 replaceObjectAtIndex:0 withObject:vc];
+    //[viewControllers2 removeObject:self];
+   // vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+   // [self.navigationController setViewControllers:viewControllers2 animated:YES];
+    
+
+    
 }
 
 - (IBAction)signIn{
@@ -91,7 +105,7 @@
     SignupPage *vc = [[SignupPage alloc] init];
     UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:vc2 animated:YES completion:nil];
-    //[self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 /*

@@ -10,6 +10,8 @@
 #import "SignupOptions.h"
 #import "BirthdatePage.h"
 #import "SLCountryPickerViewController.h"
+#import "AppDelegate.h"
+#import "MainView.h"
 
 #include <ifaddrs.h>
 #include <arpa/inet.h>
@@ -393,16 +395,26 @@ UIButton *birthButton = nil;
         [error show];
     }
     else{
-       // NSString *user_id = [real_res objectForKey:@"user_id"];
-       // NSLog(@"User_id : %@",user_id);
+        
+        NSString *user_id = [real_res objectForKey:@"user_id"];
+        NSLog(@"User_id : %@",user_id);
 #pragma - remove after testing
         // get ID
-        //[[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"loggedIn"];
-        //[[NSUserDefaults standardUserDefaults] synchronize];
+        [self.view endEditing:YES];
         
-        //[self.view endEditing:YES];
-        //[[[self presentingViewController] presentingViewController] dismissViewControllerAnimated:NO completion:nil];
-        //[self dismissViewControllerAnimated:YES completion:nil];
+        [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"loggedIn"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        MainView *vc = [[MainView alloc] init];
+        [vc setSelectedIndex:3]; // profile
+        //UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
+        [appDelegate.window setRootViewController:vc];
+        
+        NSMutableArray *viewControllers2 = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+        [viewControllers2 removeObjectAtIndex:0];
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+        [self.navigationController setViewControllers:viewControllers2 animated:NO];
         
     }
 
@@ -473,18 +485,6 @@ UIButton *birthButton = nil;
 
 - (IBAction)submitButton{
     
-    // check that info is correct, show error msg if not
-    // get age
-    //NSString *dateFromTextfield = gV_signup_age;
-    //NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    //[dateFormat setDateFormat:@"MM-dd-yyyy"];
-    //NSDate *date = [dateFormat dateFromString:dateFromTextfield];
-    // check if date is null
-   // NSLog(@"%@", date);
-   // NSDate* birthday = date;
-    //NSDate* now = [NSDate date];
-    //NSDateComponents* ageComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:birthday toDate:now options:0];
-    
     
     // if data is good, proceed. Store user info as ints for fast upload & security
     NSString *Gender = [[NSUserDefaults standardUserDefaults] stringForKey:@"Gender"];
@@ -498,42 +498,6 @@ UIButton *birthButton = nil;
     usernameTextField.text = usernameTextField.text;
     birthTextField.text = birthTextField.text;
     
-    // Post this data to DB !!
-    /*
-    dispatch_queue_t myQueue = dispatch_queue_create("CountryQue",NULL);
-    
-    dispatch_async(myQueue, ^{
-
-        self.serverResponse=[[ServerAPI sharedInstance] signUpDetails:Gender gV_signup_age:gV_signup_age country:Country region:Region name:nameTextField.text email:emailTextField.text password:passwordTextField.text userName:usernameTextField.text];
-
-        NSLog(@"********** Server response: %@", self.serverResponse.responseString);;
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            NSLog(@"********** Server msisdn: %@", self.serverResponse.responseString);
-
-            if (self.serverResponse.success)
-                
-            {
-                NSData *data = [self.serverResponse.responseString dataUsingEncoding:NSUTF8StringEncoding];
-                NSError *localError = nil;
-                NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&localError];
-                if (localError != nil) {
-                    NSLog(@"%@", [localError userInfo]);
-                }
-                NSDictionary* responseDic = (NSDictionary *)parsedObject;
-                NSLog(@"operatorDic : %@",responseDic);
-                               
-            }
-            else
-            {
-                
-            }
-            
-            
-        });
-        
-    });*/
     
     NSString *IP = [self getIPAddress:true];
     

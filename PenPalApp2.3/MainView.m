@@ -9,6 +9,11 @@
 #import "MainView.h"
 #import "InitView.h"
 
+#import "SearchTab.h"
+#import "MessagesTab.h"
+#import "NotificationsTab.h"
+#import "ProfileTab.h"
+
 @import Foundation;
 
 @interface MainView ()
@@ -20,6 +25,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    SearchTab *VC1 = [[SearchTab alloc] init];
+    VC1.title = NSLocalizedString(@"Search", @"Search");
+    UINavigationController *VC1Navigation = [[UINavigationController alloc]initWithRootViewController:VC1];
+    
+    MessagesTab *VC2 = [[MessagesTab alloc] init];
+    VC2.title = NSLocalizedString(@"Messages", @"Messages");
+    UINavigationController *VC2Navigation = [[UINavigationController alloc] initWithRootViewController:VC2];
+    
+    NotificationsTab *VC3 = [[NotificationsTab alloc] init];
+    VC3.title = NSLocalizedString(@"Alerts", @"Alerts");
+    UINavigationController *VC3Navigation = [[UINavigationController alloc] initWithRootViewController:VC3];
+    
+    ProfileTab *VC4 = [[ProfileTab alloc] init];
+    VC4.title = NSLocalizedString(@"Profile", @"Profile");
+    UINavigationController *VC4Navigation = [[UINavigationController alloc] initWithRootViewController:VC4];
+    
+    NSArray* controllers = [NSArray arrayWithObjects:VC1Navigation, VC2Navigation, VC3Navigation, VC4Navigation, nil];
+    self.viewControllers = controllers;
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -30,23 +56,17 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     
-    // only show if no login data
-    NSString* loggedIn_check = [[NSUserDefaults standardUserDefaults] stringForKey:@"loggedIn"];
-    
-    if (![loggedIn_check isEqualToString:@"YES"]) {
-        
-        InitView *vc = [[InitView alloc] init];
-        UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
-        
-        
 
-        //vc.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        //[self.navigationController pushViewController:vc animated:YES];
-        [self presentViewController:vc2 animated:NO completion:nil];
-        
-        //InitView *initView = (InitView *) [self.storyboard instantiateViewControllerWithIdentifier:@"initView"];
-        //[self presentViewController:initView animated:NO completion:nil];
-    }
+    
+
+
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+
+
+
     
 }
 

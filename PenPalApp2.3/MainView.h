@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainView : UITabBarController
+@interface MainView : UITabBarController{
+    
+    // <UITabBarControllerDelegate>
+    
+}
 
 @end

@@ -14,10 +14,13 @@
 		FAE0ECDD1B13D03500852D5B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE0ECDC1B13D03500852D5B /* Foundation.framework */; };
 		FAE0ECE41B13D62300852D5B /* CountriesFlags36px.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE0ECE11B13D62300852D5B /* CountriesFlags36px.xcassets */; };
 		FAE0ECE51B13D62300852D5B /* SLCountryPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE0ECE31B13D62300852D5B /* SLCountryPickerViewController.m */; };
+		FAE0ECE81B1D9E6000852D5B /* SearchTab.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE0ECE71B1D9E6000852D5B /* SearchTab.m */; };
+		FAE0ECEB1B1D9E8600852D5B /* MessagesTab.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE0ECEA1B1D9E8600852D5B /* MessagesTab.m */; };
+		FAE0ECEE1B1D9EA400852D5B /* NotificationsTab.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE0ECED1B1D9EA400852D5B /* NotificationsTab.m */; };
+		FAE0ECF11B1D9F1300852D5B /* ProfileTab.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE0ECF01B1D9F1300852D5B /* ProfileTab.m */; };
+		FAE0ECF41B1FAFFD00852D5B /* FilterSearchPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE0ECF31B1FAFFD00852D5B /* FilterSearchPage.m */; };
 		FAE92E081ADB005D006A1A72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE92E071ADB005D006A1A72 /* main.m */; };
 		FAE92E0B1ADB005D006A1A72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE92E0A1ADB005D006A1A72 /* AppDelegate.m */; };
-		FAE92E0E1ADB005D006A1A72 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE92E0D1ADB005D006A1A72 /* FirstViewController.m */; };
-		FAE92E111ADB005D006A1A72 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE92E101ADB005D006A1A72 /* SecondViewController.m */; };
 		FAE92E141ADB005D006A1A72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE92E121ADB005D006A1A72 /* Main.storyboard */; };
 		FAE92E161ADB005E006A1A72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE92E151ADB005E006A1A72 /* Images.xcassets */; };
 		FAE92E191ADB005E006A1A72 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE92E171ADB005E006A1A72 /* LaunchScreen.xib */; };
@@ -50,15 +53,21 @@
 		FAE0ECE11B13D62300852D5B /* CountriesFlags36px.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CountriesFlags36px.xcassets; sourceTree = "<group>"; };
 		FAE0ECE21B13D62300852D5B /* SLCountryPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCountryPickerViewController.h; sourceTree = "<group>"; };
 		FAE0ECE31B13D62300852D5B /* SLCountryPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCountryPickerViewController.m; sourceTree = "<group>"; };
+		FAE0ECE61B1D9E6000852D5B /* SearchTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTab.h; sourceTree = "<group>"; };
+		FAE0ECE71B1D9E6000852D5B /* SearchTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTab.m; sourceTree = "<group>"; };
+		FAE0ECE91B1D9E8600852D5B /* MessagesTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTab.h; sourceTree = "<group>"; };
+		FAE0ECEA1B1D9E8600852D5B /* MessagesTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTab.m; sourceTree = "<group>"; };
+		FAE0ECEC1B1D9EA400852D5B /* NotificationsTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTab.h; sourceTree = "<group>"; };
+		FAE0ECED1B1D9EA400852D5B /* NotificationsTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTab.m; sourceTree = "<group>"; };
+		FAE0ECEF1B1D9F1300852D5B /* ProfileTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTab.h; sourceTree = "<group>"; };
+		FAE0ECF01B1D9F1300852D5B /* ProfileTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTab.m; sourceTree = "<group>"; };
+		FAE0ECF21B1FAFFD00852D5B /* FilterSearchPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterSearchPage.h; sourceTree = "<group>"; };
+		FAE0ECF31B1FAFFD00852D5B /* FilterSearchPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterSearchPage.m; sourceTree = "<group>"; };
 		FAE92E021ADB005D006A1A72 /* PenPalApp2.3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PenPalApp2.3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE92E061ADB005D006A1A72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAE92E071ADB005D006A1A72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAE92E091ADB005D006A1A72 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAE92E0A1ADB005D006A1A72 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FAE92E0C1ADB005D006A1A72 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		FAE92E0D1ADB005D006A1A72 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		FAE92E0F1ADB005D006A1A72 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		FAE92E101ADB005D006A1A72 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		FAE92E131ADB005D006A1A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAE92E151ADB005E006A1A72 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FAE92E181ADB005E006A1A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -138,10 +147,16 @@
 			children = (
 				FAE92E091ADB005D006A1A72 /* AppDelegate.h */,
 				FAE92E0A1ADB005D006A1A72 /* AppDelegate.m */,
-				FAE92E0C1ADB005D006A1A72 /* FirstViewController.h */,
-				FAE92E0D1ADB005D006A1A72 /* FirstViewController.m */,
-				FAE92E0F1ADB005D006A1A72 /* SecondViewController.h */,
-				FAE92E101ADB005D006A1A72 /* SecondViewController.m */,
+				FAE0ECE61B1D9E6000852D5B /* SearchTab.h */,
+				FAE0ECE71B1D9E6000852D5B /* SearchTab.m */,
+				FAE0ECF21B1FAFFD00852D5B /* FilterSearchPage.h */,
+				FAE0ECF31B1FAFFD00852D5B /* FilterSearchPage.m */,
+				FAE0ECE91B1D9E8600852D5B /* MessagesTab.h */,
+				FAE0ECEA1B1D9E8600852D5B /* MessagesTab.m */,
+				FAE0ECEC1B1D9EA400852D5B /* NotificationsTab.h */,
+				FAE0ECED1B1D9EA400852D5B /* NotificationsTab.m */,
+				FAE0ECEF1B1D9F1300852D5B /* ProfileTab.h */,
+				FAE0ECF01B1D9F1300852D5B /* ProfileTab.m */,
 				FAE92E121ADB005D006A1A72 /* Main.storyboard */,
 				FAE92E2E1ADB0193006A1A72 /* MainView.h */,
 				FAE92E2F1ADB0193006A1A72 /* MainView.m */,
@@ -294,17 +309,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAE92E301ADB0193006A1A72 /* MainView.m in Sources */,
+				FAE0ECE81B1D9E6000852D5B /* SearchTab.m in Sources */,
 				FAE92E411ADC1ED8006A1A72 /* SignupPage.m in Sources */,
 				FAA7BFF31B05122C00B2A694 /* BirthdatePage.m in Sources */,
 				FAE92E441ADC67BF006A1A72 /* SignupOptions.m in Sources */,
 				FAE92E3B1ADB0A87006A1A72 /* LoginPage.m in Sources */,
 				FAE92E3E1ADBFACF006A1A72 /* ForgotLoginInfo.m in Sources */,
+				FAE0ECEB1B1D9E8600852D5B /* MessagesTab.m in Sources */,
+				FAE0ECF41B1FAFFD00852D5B /* FilterSearchPage.m in Sources */,
 				FAE0ECE51B13D62300852D5B /* SLCountryPickerViewController.m in Sources */,
-				FAE92E111ADB005D006A1A72 /* SecondViewController.m in Sources */,
+				FAE0ECEE1B1D9EA400852D5B /* NotificationsTab.m in Sources */,
 				FAE92E381ADB04BC006A1A72 /* InitView.m in Sources */,
 				FAE92E0B1ADB005D006A1A72 /* AppDelegate.m in Sources */,
-				FAE92E0E1ADB005D006A1A72 /* FirstViewController.m in Sources */,
 				FAE92E081ADB005D006A1A72 /* main.m in Sources */,
+				FAE0ECF11B1D9F1300852D5B /* ProfileTab.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
