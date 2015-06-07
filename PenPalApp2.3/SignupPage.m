@@ -200,6 +200,7 @@ UIButton *birthButton = nil;
 
 -(void)viewWillAppear:(BOOL)animated{
     
+#pragma - make like th rest, store in user defaults 
     if (![gV_bday isEqualToString:@""] && gV_bday) {
         [birthButton setTitle:gV_bday forState:UIControlStateNormal];
     }
@@ -256,7 +257,7 @@ UIButton *birthButton = nil;
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0)
-        return 22;
+        return 20;
     if (section == 1)
         return 20;
     if (section == 2)
@@ -396,25 +397,27 @@ UIButton *birthButton = nil;
     }
     else{
         
-        NSString *user_id = [real_res objectForKey:@"user_id"];
-        NSLog(@"User_id : %@",user_id);
-#pragma - remove after testing
-        // get ID
         [self.view endEditing:YES];
         
+        NSString *user_id = [real_res objectForKey:@"user_id"];
+        NSString *user_pass = [real_res objectForKey:@"password"];
+        NSLog(@"User_ID: %@, User_Pass: %@",user_id, user_pass);
+        
+        [[NSUserDefaults standardUserDefaults] setObject:user_id forKey:@"user_id"];
+        [[NSUserDefaults standardUserDefaults] setObject:user_pass forKey:@"user_pass"];
         [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"loggedIn"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-        MainView *vc = [[MainView alloc] init];
-        [vc setSelectedIndex:3]; // profile
-        //UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
-        [appDelegate.window setRootViewController:vc];
         
         NSMutableArray *viewControllers2 = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
         [viewControllers2 removeObjectAtIndex:0];
         [self.navigationController setNavigationBarHidden:YES animated:NO];
         [self.navigationController setViewControllers:viewControllers2 animated:NO];
+        
+        
+        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+        MainView *vc = [[MainView alloc] init];
+        [appDelegate.window setRootViewController:vc];
         
     }
 
@@ -598,6 +601,8 @@ NSMutableString *filteredPhoneStringFromStringWithFilter(NSString *string, NSStr
     return [NSMutableString stringWithUTF8String:outputString];
 }
 
+/*
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
     NSString *filter = nil;
@@ -640,7 +645,7 @@ NSMutableString *filteredPhoneStringFromStringWithFilter(NSString *string, NSStr
     
     return NO;
 }
-
+*/
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger) section
@@ -895,6 +900,30 @@ NSMutableString *filteredPhoneStringFromStringWithFilter(NSString *string, NSStr
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     textField.backgroundColor = [UIColor clearColor];
+}
+
+#define MAXLENGTH 30
+
+- (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    /*
+    switch(textField.tag) {
+        case 104:
+        {
+            filter = @"##-##-####";
+        }
+        default:
+            break;
+    }*/
+    
+    //if(!filter) return YES; // No filter provided, allow anything
+    
+    NSUInteger oldLength = [textField.text length];
+    NSUInteger replacementLength = [string length];
+    NSUInteger rangeLength = range.length;
+    
+    NSUInteger newLength = oldLength - rangeLength + replacementLength;
+    
+    return newLength <= MAXLENGTH;
 }
 
 // sagar

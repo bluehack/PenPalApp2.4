@@ -54,7 +54,6 @@ UILabel *forgotLabel = nil;
     //[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0]
     
     forgotLabel = [[UILabel alloc] initWithFrame: CGRectMake(buttonX, yPos + 15, labelWidth, labelHeight)];
-    
     [forgotLabel setFont:[UIFont fontWithName:@"Helvetica" size:16]];
     [forgotLabel setTextColor:[UIColor blackColor]];
     forgotLabel.textAlignment = NSTextAlignmentCenter;

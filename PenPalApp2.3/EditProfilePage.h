@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface EditProfilePage : UIViewController<UIAlertViewDelegate, UITextFieldDelegate,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,NSURLConnectionDelegate>{
+@interface EditProfilePage : UIViewController<UIImagePickerControllerDelegate, UIAlertViewDelegate, UITextFieldDelegate,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,NSURLConnectionDelegate, UINavigationControllerDelegate>{
+    
     UITableView *mainView;
+    UIImageView *imageView;
 }
 
 @end

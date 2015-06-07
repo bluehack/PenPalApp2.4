@@ -10,6 +10,6 @@
 
 @interface ProfileTab : UIViewController
 
-- (IBAction)logoutButton;
+//- (IBAction)logoutButton;
 
 @end

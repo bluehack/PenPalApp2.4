@@ -186,8 +186,11 @@ UILabel *loginErrorLable = nil;
         [self.view endEditing:YES];
         
         NSString *user_id = [real_res objectForKey:@"user_id"];
-        NSLog(@"User_id : %@",user_id);
+        NSString *user_pass = [real_res objectForKey:@"password"];
+        NSLog(@"User_ID: %@, User_Pass: %@",user_id, user_pass);
         
+        [[NSUserDefaults standardUserDefaults] setObject:user_id forKey:@"user_id"];
+        [[NSUserDefaults standardUserDefaults] setObject:user_pass forKey:@"user_pass"];
         [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"loggedIn"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         

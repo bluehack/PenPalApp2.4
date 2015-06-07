@@ -10,8 +10,6 @@
 	<string>PenPalApp2.3</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>25A501193DEDBF89DB3ED30937437CC226CA30F8</key>
-		<string>https://github.com/bluehack/PenlPalApp2.0.git</string>
 		<key>42768ED99C21607371F7E19703970BD6A7299406</key>
 		<string>https://github.com/bluehack/PenPalApp2.4.git</string>
 	</dict>
@@ -19,8 +17,6 @@
 	<string>PenPalApp2.3.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>25A501193DEDBF89DB3ED30937437CC226CA30F8</key>
-		<string>../../../PenPalApp2.3</string>
 		<key>42768ED99C21607371F7E19703970BD6A7299406</key>
 		<string>../..</string>
 	</dict>
@@ -36,17 +32,9 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>25A501193DEDBF89DB3ED30937437CC226CA30F8</string>
-			<key>IDESourceControlWCCName</key>
-			<string>PenPalApp2.3</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>42768ED99C21607371F7E19703970BD6A7299406</string>
 			<key>IDESourceControlWCCName</key>
-			<string>PenPalApp2.4</string>
+			<string>App_private</string>
 		</dict>
 	</array>
 </dict>

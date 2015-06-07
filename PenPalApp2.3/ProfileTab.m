@@ -21,13 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIButton *Button = [[UIButton alloc] initWithFrame: CGRectMake(40, 160, 100, 50)];
-    [Button setTitleColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0] forState: UIControlStateNormal];
-    Button.titleLabel.font = [UIFont systemFontOfSize:14];
-    [Button setTitleColor:[UIColor blueColor] forState: UIControlStateHighlighted];
-    [Button setTitle:@"Logout" forState:UIControlStateNormal];
-    [Button addTarget:self action:@selector(logoutButton) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:Button];
+
     
     self.navigationItem.title = NSLocalizedString(@"Profile", nil);
     
@@ -41,26 +35,13 @@
 - (IBAction)editButton{
     
     EditProfilePage *vc = [[EditProfilePage alloc] init];
-    UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
+    //UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
     
-    [self.navigationController pushViewController:vc animated:YES];
+    [(UINavigationController *)self.tabBarController.selectedViewController pushViewController:vc animated:YES];
+    //[self.navigationController pushViewController:vc animated:YES];
 }
 
-- (IBAction)logoutButton{
-    
-    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"loggedIn"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    InitView *vc = [[InitView alloc] init];
-    UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
-    [appDelegate.window setRootViewController:vc2];
-
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
