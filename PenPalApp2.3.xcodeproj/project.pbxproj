@@ -264,7 +264,6 @@
 				TargetAttributes = {
 					FAE92E011ADB005D006A1A72 = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = RL9TRLA734;
 					};
 					FAE92E1D1ADB005E006A1A72 = {
 						CreatedOnToolsVersion = 6.3;
@@ -464,7 +463,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rahul Gupta (9XRT9A2HUN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rahul Gupta (9XRT9A2HUN)";
 				INFOPLIST_FILE = PenPalApp2.3/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -478,7 +477,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rahul Gupta (9XRT9A2HUN)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rahul Gupta (9XRT9A2HUN)";
 				INFOPLIST_FILE = PenPalApp2.3/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

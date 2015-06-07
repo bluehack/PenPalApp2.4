@@ -267,6 +267,8 @@
     NSString *message = [real_res objectForKey:@"message"];
     NSString *success = [real_res objectForKey:@"success"];
     
+    NSLog(@"DATA: %@", res_arr);
+    
     if (![code isEqualToString:@"0"]) {
      
     }
@@ -293,6 +295,8 @@
         
         _usernameField.text = username;
         _fullnameField.text = fullname;
+        _bioField.text = bio;
+        _emailField.text = user_email;
         
         NSString *BOD = [NSString stringWithFormat:@"Birthdate: %@", birthdate];
         [_ageButton setTitle:BOD forState:UIControlStateNormal];
