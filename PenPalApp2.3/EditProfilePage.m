@@ -292,6 +292,7 @@
         }
         
         _usernameField.text = username;
+        _fullnameField.text = fullname;
         
         NSString *BOD = [NSString stringWithFormat:@"Birthdate: %@", birthdate];
         [_ageButton setTitle:BOD forState:UIControlStateNormal];
