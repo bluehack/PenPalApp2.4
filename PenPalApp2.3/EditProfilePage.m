@@ -267,7 +267,7 @@
     NSString *message = [real_res objectForKey:@"message"];
     NSString *success = [real_res objectForKey:@"success"];
     
-    NSLog(@"DATA: %@", res_arr);
+    //NSLog(@"DATA: %@", res_arr);
     
     if (![code isEqualToString:@"0"]) {
      
