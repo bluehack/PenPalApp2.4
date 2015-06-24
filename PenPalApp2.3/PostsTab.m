@@ -6,23 +6,37 @@
 //  Copyright (c) 2015 Computer. All rights reserved.
 //
 
-#import "NotificationsTab.h"
+#import "PostsTab.h"
 
 
-@interface NotificationsTab ()
+@interface PostsTab ()
 
 @end
 
-@implementation NotificationsTab
+@implementation PostsTab
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.navigationItem.title = NSLocalizedString(@"Alerts", nil);
+    self.navigationItem.title = NSLocalizedString(@"Posts", nil);
+    
+    UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refresh_search)];
+    
+    UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStylePlain target:self action:@selector(addButton)];
+    
+    self.navigationItem.leftBarButtonItem = refreshItem;
+    self.navigationItem.rightBarButtonItem = editItem;
     
 }
 
+- (IBAction)addButton{
+
+}
+
+- (IBAction)refresh_search{
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

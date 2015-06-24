@@ -37,8 +37,11 @@
     EditProfilePage *vc = [[EditProfilePage alloc] init];
     //UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
     
-    [(UINavigationController *)self.tabBarController.selectedViewController pushViewController:vc animated:YES];
+   // [(UINavigationController *)self.tabBarController.selectedViewController pushViewController:vc animated:YES];
     //[self.navigationController pushViewController:vc animated:YES];
+    
+    UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:vc2 animated:YES completion:nil];
 }
 
 

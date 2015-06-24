@@ -60,7 +60,9 @@
     
     UIBarButtonItem *saveItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButton)];
     
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
     
+    self.navigationItem.leftBarButtonItem = cancelItem;
     self.navigationItem.rightBarButtonItem = saveItem;
     
     self.navigationItem.title = NSLocalizedString(@"Edit", nil);
@@ -378,34 +380,14 @@ imagePicker.allowsEditing = NO;
         NSLog(@"Picked Image...");
         
         //if (newMedia)
+        /*
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
-                                           @selector(image:finishedSavingWithError:contextInfo:),
+                                           @selector(image:upIMG:contextInfo:),
                                            nil);
-    }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
-    {
-        // Code here to support video if enabled
-    }
-}
-
--(void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
-{
-    if (error) {
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle: @"Save failed"
-                              message: @"Failed to save image"
-                              delegate: nil
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil];
-        [alert show];
-        
-    }else{
-        
+        */
         
         NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
-        
-        
         
         if (imageData != nil)
         {
@@ -440,7 +422,7 @@ imagePicker.allowsEditing = NO;
             [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"p_chk\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[Key dataUsingEncoding:NSUTF8StringEncoding]];
             
-
+            
             
             [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[@"Content-Disposition: form-data; name=\"image\"; filename=\".jpg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
@@ -457,8 +439,33 @@ imagePicker.allowsEditing = NO;
             NSLog(@"Out: %@", returnString);
             
             [self updateInfo];
-           
+            
         }
+        
+
+        
+        
+    }
+    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
+    {
+        // Code here to support video if enabled
+    }
+}
+
+-(void)image:(UIImage *)image upIMG:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Save failed"
+                              message: @"Failed to save image"
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+        
+    }else{
+        
+    //
 
         
         
@@ -521,8 +528,14 @@ imagePicker.allowsEditing = NO;
 }
 
 - (IBAction)saveButton{
+    [self.view endEditing:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)cancelButton{
+    [self.view endEditing:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -545,7 +558,7 @@ imagePicker.allowsEditing = NO;
 -(void)actionCNY:(id)sender{
     SLCountryPickerViewController *vc = [[SLCountryPickerViewController alloc]init];
     vc.completionBlock = ^(NSString *country, NSString *code){
-        //_countryNameLabel.text = country;
+        [_countryButton2 setTitle:country forState:UIControlStateNormal];
         //_countryImageView.image = [UIImage imageNamed:code];
         //_countryCodeLabel.text = code;
         

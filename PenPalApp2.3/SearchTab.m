@@ -20,19 +20,23 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(filter_search)];
+    UIBarButtonItem *refreshItem = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(refresh_search)];
     
     UIBarButtonItem *filterItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filter_search)];
     
     
     //self.navigationController.navigationItem.rightBarButtonItem = filterItem;
-    //self.navigationItem.leftBarButtonItem = cancelItem;
+    self.navigationItem.leftBarButtonItem = refreshItem;
     self.navigationItem.rightBarButtonItem = filterItem;
     
     self.navigationItem.title = NSLocalizedString(@"Search", nil);
     
     //[[self.tabBarController.tabBar.items objectAtIndex:0] setTitle:NSLocalizedString(@"Search", @"Search")];
 
+    
+}
+
+- (IBAction)refresh_search{
     
 }
 

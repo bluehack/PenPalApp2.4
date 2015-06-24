@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NotificationsTab : UIViewController
+@interface PostsTab : UIViewController
 
 @end

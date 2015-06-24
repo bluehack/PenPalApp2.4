@@ -11,7 +11,7 @@
 
 #import "SearchTab.h"
 #import "MessagesTab.h"
-#import "NotificationsTab.h"
+#import "PostsTab.h"
 #import "ProfileTab.h"
 
 @import Foundation;
@@ -33,8 +33,8 @@
     VC2.title = NSLocalizedString(@"Messages", @"Messages");
     UINavigationController *VC2Navigation = [[UINavigationController alloc] initWithRootViewController:VC2];
     
-    NotificationsTab *VC3 = [[NotificationsTab alloc] init];
-    VC3.title = NSLocalizedString(@"Alerts", @"Alerts");
+    PostsTab *VC3 = [[PostsTab alloc] init];
+    VC3.title = NSLocalizedString(@"Posts", @"Posts");
     UINavigationController *VC3Navigation = [[UINavigationController alloc] initWithRootViewController:VC3];
     
     ProfileTab *VC4 = [[ProfileTab alloc] init];
