@@ -15,4 +15,7 @@ extern NSString *gV_bday;
     UIDatePicker *birthdate;
 }
 
+@property (nonatomic, copy) void (^completionBlock)(NSString *country);
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @end

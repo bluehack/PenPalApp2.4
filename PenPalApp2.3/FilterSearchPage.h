@@ -10,6 +10,7 @@
 
 @interface FilterSearchPage : UIViewController<UIAlertViewDelegate, UITextFieldDelegate,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,NSURLConnectionDelegate>{
     UITableView *mainView;
+    UIView *searchPicker;
 }
 
 @end

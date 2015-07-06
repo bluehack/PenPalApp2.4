@@ -183,6 +183,7 @@ UILabel *loginErrorLable = nil;
         [loginPasswordTextField.layer addAnimation:shake forKey:@"position"];
     }
     else{
+        
         [self.view endEditing:YES];
         
         NSString *user_id = [real_res objectForKey:@"user_id"];
@@ -223,9 +224,6 @@ UILabel *loginErrorLable = nil;
     loginPasswordTextField.text = loginPasswordTextField.text;
     
     
-    
-    
-    
     self.responseData = [NSMutableData data];
     NSString *post = [NSString stringWithFormat:@"p_chk=key&user=%@&password=%@",loginNameTextField.text,loginPasswordTextField.text];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding]; // NSASCIIStringEncoding NSUTF8StringEncoding
@@ -236,8 +234,6 @@ UILabel *loginErrorLable = nil;
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    
     
     //else
     

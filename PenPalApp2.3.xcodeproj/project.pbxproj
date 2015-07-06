@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		B8134FD01AE216CC00A921B8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B8134FCF1AE216CC00A921B8 /* libz.dylib */; };
+		FA1FED291B40CB100061EADA /* BOButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED111B40CB100061EADA /* BOButtonTableViewCell.m */; };
+		FA1FED2A1B40CB100061EADA /* BOChoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED131B40CB100061EADA /* BOChoiceTableViewCell.m */; };
+		FA1FED2B1B40CB100061EADA /* BODisclosureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED151B40CB100061EADA /* BODisclosureTableViewCell.m */; };
+		FA1FED2C1B40CB100061EADA /* BOSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED191B40CB100061EADA /* BOSetting.m */; };
+		FA1FED2D1B40CB100061EADA /* BOSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED1B1B40CB100061EADA /* BOSwitchTableViewCell.m */; };
+		FA1FED2E1B40CB100061EADA /* BOTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED1E1B40CB100061EADA /* BOTableViewCell.m */; };
+		FA1FED2F1B40CB100061EADA /* BOTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED211B40CB100061EADA /* BOTableViewController.m */; };
+		FA1FED301B40CB100061EADA /* BOTableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED231B40CB100061EADA /* BOTableViewSection.m */; };
+		FA1FED311B40CB100061EADA /* BOTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED251B40CB100061EADA /* BOTextTableViewCell.m */; };
+		FA1FED321B40CB100061EADA /* BOTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED271B40CB100061EADA /* BOTimeTableViewCell.m */; };
+		FA1FED3C1B41CFFB0061EADA /* BOEditProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED3B1B41CFFB0061EADA /* BOEditProfile.m */; };
+		FA1FED3F1B41D00D0061EADA /* BOEditProfileDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED3E1B41D00D0061EADA /* BOEditProfileDetail.m */; };
+		FA1FED421B41DF9D0061EADA /* BOTextTableViewCellSecure.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1FED411B41DF9D0061EADA /* BOTextTableViewCellSecure.m */; };
 		FA9C25851B24B51D00F652E5 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA9C25841B24B51D00F652E5 /* default.jpg */; };
 		FAA7BFF31B05122C00B2A694 /* BirthdatePage.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7BFF21B05122C00B2A694 /* BirthdatePage.m */; };
 		FAE0ECD91B13D02100852D5B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE0ECD81B13D02100852D5B /* CoreGraphics.framework */; };
@@ -47,6 +60,36 @@
 
 /* Begin PBXFileReference section */
 		B8134FCF1AE216CC00A921B8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		FA1FED101B40CB100061EADA /* BOButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOButtonTableViewCell.h; sourceTree = "<group>"; };
+		FA1FED111B40CB100061EADA /* BOButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOButtonTableViewCell.m; sourceTree = "<group>"; };
+		FA1FED121B40CB100061EADA /* BOChoiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOChoiceTableViewCell.h; sourceTree = "<group>"; };
+		FA1FED131B40CB100061EADA /* BOChoiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOChoiceTableViewCell.m; sourceTree = "<group>"; };
+		FA1FED141B40CB100061EADA /* BODisclosureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BODisclosureTableViewCell.h; sourceTree = "<group>"; };
+		FA1FED151B40CB100061EADA /* BODisclosureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BODisclosureTableViewCell.m; sourceTree = "<group>"; };
+		FA1FED161B40CB100061EADA /* Bohr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bohr.h; sourceTree = "<group>"; };
+		FA1FED171B40CB100061EADA /* BOSetting+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BOSetting+Private.h"; sourceTree = "<group>"; };
+		FA1FED181B40CB100061EADA /* BOSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOSetting.h; sourceTree = "<group>"; };
+		FA1FED191B40CB100061EADA /* BOSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOSetting.m; sourceTree = "<group>"; };
+		FA1FED1A1B40CB100061EADA /* BOSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOSwitchTableViewCell.h; sourceTree = "<group>"; };
+		FA1FED1B1B40CB100061EADA /* BOSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOSwitchTableViewCell.m; sourceTree = "<group>"; };
+		FA1FED1C1B40CB100061EADA /* BOTableViewCell+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BOTableViewCell+Subclass.h"; sourceTree = "<group>"; };
+		FA1FED1D1B40CB100061EADA /* BOTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTableViewCell.h; sourceTree = "<group>"; };
+		FA1FED1E1B40CB100061EADA /* BOTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTableViewCell.m; sourceTree = "<group>"; };
+		FA1FED1F1B40CB100061EADA /* BOTableViewController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BOTableViewController+Private.h"; sourceTree = "<group>"; };
+		FA1FED201B40CB100061EADA /* BOTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTableViewController.h; sourceTree = "<group>"; };
+		FA1FED211B40CB100061EADA /* BOTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTableViewController.m; sourceTree = "<group>"; };
+		FA1FED221B40CB100061EADA /* BOTableViewSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTableViewSection.h; sourceTree = "<group>"; };
+		FA1FED231B40CB100061EADA /* BOTableViewSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTableViewSection.m; sourceTree = "<group>"; };
+		FA1FED241B40CB100061EADA /* BOTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTextTableViewCell.h; sourceTree = "<group>"; };
+		FA1FED251B40CB100061EADA /* BOTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTextTableViewCell.m; sourceTree = "<group>"; };
+		FA1FED261B40CB100061EADA /* BOTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTimeTableViewCell.h; sourceTree = "<group>"; };
+		FA1FED271B40CB100061EADA /* BOTimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTimeTableViewCell.m; sourceTree = "<group>"; };
+		FA1FED3A1B41CFFB0061EADA /* BOEditProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOEditProfile.h; sourceTree = "<group>"; };
+		FA1FED3B1B41CFFB0061EADA /* BOEditProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOEditProfile.m; sourceTree = "<group>"; };
+		FA1FED3D1B41D00D0061EADA /* BOEditProfileDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOEditProfileDetail.h; sourceTree = "<group>"; };
+		FA1FED3E1B41D00D0061EADA /* BOEditProfileDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOEditProfileDetail.m; sourceTree = "<group>"; };
+		FA1FED401B41DF9D0061EADA /* BOTextTableViewCellSecure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTextTableViewCellSecure.h; sourceTree = "<group>"; };
+		FA1FED411B41DF9D0061EADA /* BOTextTableViewCellSecure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTextTableViewCellSecure.m; sourceTree = "<group>"; };
 		FA9C25821B215F1E00F652E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		FA9C25841B24B51D00F652E5 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		FAA7BFF11B05122C00B2A694 /* BirthdatePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdatePage.h; sourceTree = "<group>"; };
@@ -116,6 +159,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA1FED0F1B40CB100061EADA /* Bohr */ = {
+			isa = PBXGroup;
+			children = (
+				FA1FED101B40CB100061EADA /* BOButtonTableViewCell.h */,
+				FA1FED111B40CB100061EADA /* BOButtonTableViewCell.m */,
+				FA1FED121B40CB100061EADA /* BOChoiceTableViewCell.h */,
+				FA1FED131B40CB100061EADA /* BOChoiceTableViewCell.m */,
+				FA1FED141B40CB100061EADA /* BODisclosureTableViewCell.h */,
+				FA1FED151B40CB100061EADA /* BODisclosureTableViewCell.m */,
+				FA1FED161B40CB100061EADA /* Bohr.h */,
+				FA1FED171B40CB100061EADA /* BOSetting+Private.h */,
+				FA1FED181B40CB100061EADA /* BOSetting.h */,
+				FA1FED191B40CB100061EADA /* BOSetting.m */,
+				FA1FED1A1B40CB100061EADA /* BOSwitchTableViewCell.h */,
+				FA1FED1B1B40CB100061EADA /* BOSwitchTableViewCell.m */,
+				FA1FED1C1B40CB100061EADA /* BOTableViewCell+Subclass.h */,
+				FA1FED1D1B40CB100061EADA /* BOTableViewCell.h */,
+				FA1FED1E1B40CB100061EADA /* BOTableViewCell.m */,
+				FA1FED1F1B40CB100061EADA /* BOTableViewController+Private.h */,
+				FA1FED201B40CB100061EADA /* BOTableViewController.h */,
+				FA1FED211B40CB100061EADA /* BOTableViewController.m */,
+				FA1FED221B40CB100061EADA /* BOTableViewSection.h */,
+				FA1FED231B40CB100061EADA /* BOTableViewSection.m */,
+				FA1FED241B40CB100061EADA /* BOTextTableViewCell.h */,
+				FA1FED251B40CB100061EADA /* BOTextTableViewCell.m */,
+				FA1FED401B41DF9D0061EADA /* BOTextTableViewCellSecure.h */,
+				FA1FED411B41DF9D0061EADA /* BOTextTableViewCellSecure.m */,
+				FA1FED261B40CB100061EADA /* BOTimeTableViewCell.h */,
+				FA1FED271B40CB100061EADA /* BOTimeTableViewCell.m */,
+			);
+			path = Bohr;
+			sourceTree = "<group>";
+		};
 		FAE0ECE01B13D62300852D5B /* CountryPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +241,10 @@
 				FAE0ECF01B1D9F1300852D5B /* ProfileTab.m */,
 				FAE0ECF51B2082F000852D5B /* EditProfilePage.h */,
 				FAE0ECF61B2082F000852D5B /* EditProfilePage.m */,
+				FA1FED3A1B41CFFB0061EADA /* BOEditProfile.h */,
+				FA1FED3B1B41CFFB0061EADA /* BOEditProfile.m */,
+				FA1FED3D1B41D00D0061EADA /* BOEditProfileDetail.h */,
+				FA1FED3E1B41D00D0061EADA /* BOEditProfileDetail.m */,
 				FAE92E121ADB005D006A1A72 /* Main.storyboard */,
 				FAE92E2E1ADB0193006A1A72 /* MainView.h */,
 				FAE92E2F1ADB0193006A1A72 /* MainView.m */,
@@ -181,6 +261,7 @@
 				FAA7BFF11B05122C00B2A694 /* BirthdatePage.h */,
 				FAA7BFF21B05122C00B2A694 /* BirthdatePage.m */,
 				FA9C25841B24B51D00F652E5 /* default.jpg */,
+				FA1FED0F1B40CB100061EADA /* Bohr */,
 				FAE0ECE01B13D62300852D5B /* CountryPicker */,
 				FAE92E151ADB005E006A1A72 /* Images.xcassets */,
 				FAE92E171ADB005E006A1A72 /* LaunchScreen.xib */,
@@ -319,22 +400,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1FED2E1B40CB100061EADA /* BOTableViewCell.m in Sources */,
 				FAE0ECF71B2082F000852D5B /* EditProfilePage.m in Sources */,
 				FAE92E301ADB0193006A1A72 /* MainView.m in Sources */,
+				FA1FED291B40CB100061EADA /* BOButtonTableViewCell.m in Sources */,
+				FA1FED2F1B40CB100061EADA /* BOTableViewController.m in Sources */,
 				FAE0ECE81B1D9E6000852D5B /* SearchTab.m in Sources */,
 				FAE92E411ADC1ED8006A1A72 /* SignupPage.m in Sources */,
 				FAA7BFF31B05122C00B2A694 /* BirthdatePage.m in Sources */,
+				FA1FED301B40CB100061EADA /* BOTableViewSection.m in Sources */,
 				FAE92E441ADC67BF006A1A72 /* SignupOptions.m in Sources */,
 				FAE92E3B1ADB0A87006A1A72 /* LoginPage.m in Sources */,
+				FA1FED321B40CB100061EADA /* BOTimeTableViewCell.m in Sources */,
+				FA1FED2D1B40CB100061EADA /* BOSwitchTableViewCell.m in Sources */,
+				FA1FED421B41DF9D0061EADA /* BOTextTableViewCellSecure.m in Sources */,
+				FA1FED2B1B40CB100061EADA /* BODisclosureTableViewCell.m in Sources */,
+				FA1FED3C1B41CFFB0061EADA /* BOEditProfile.m in Sources */,
 				FAE92E3E1ADBFACF006A1A72 /* ForgotLoginInfo.m in Sources */,
 				FAE0ECEB1B1D9E8600852D5B /* MessagesTab.m in Sources */,
 				FAE0ECF41B1FAFFD00852D5B /* FilterSearchPage.m in Sources */,
+				FA1FED2A1B40CB100061EADA /* BOChoiceTableViewCell.m in Sources */,
 				FAE0ECE51B13D62300852D5B /* SLCountryPickerViewController.m in Sources */,
+				FA1FED3F1B41D00D0061EADA /* BOEditProfileDetail.m in Sources */,
 				FAE0ECEE1B1D9EA400852D5B /* PostsTab.m in Sources */,
 				FAE92E381ADB04BC006A1A72 /* InitView.m in Sources */,
 				FAE92E0B1ADB005D006A1A72 /* AppDelegate.m in Sources */,
+				FA1FED2C1B40CB100061EADA /* BOSetting.m in Sources */,
 				FAE92E081ADB005D006A1A72 /* main.m in Sources */,
 				FAE0ECF11B1D9F1300852D5B /* ProfileTab.m in Sources */,
+				FA1FED311B40CB100061EADA /* BOTextTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +559,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Sebastian sebastine (QT7PG3FGRH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sebastian sebastine (QT7PG3FGRH)";
 				INFOPLIST_FILE = PenPalApp2.3/Info.plist;
@@ -480,6 +575,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Sebastian sebastine (QT7PG3FGRH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sebastian sebastine (QT7PG3FGRH)";
 				INFOPLIST_FILE = PenPalApp2.3/Info.plist;

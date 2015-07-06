@@ -15,4 +15,6 @@
     UIImageView *imageView;
 }
 
+@property (strong) UIActivityIndicatorView *mySpinner;
+
 @end

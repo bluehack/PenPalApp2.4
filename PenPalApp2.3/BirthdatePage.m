@@ -100,6 +100,21 @@ NSString *gV_bday = nil;
     
     [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    
+    
+    if (self.completionBlock) {
+
+        self.completionBlock(dateString);
+        
+        [[NSUserDefaults standardUserDefaults] setObject:dateString forKey:@"Country_text"];
+        
+        NSLog(@"BDate: %@", dateString);
+        
+    }
+    
+    
 }
 
 /*

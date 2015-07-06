@@ -12,14 +12,28 @@
 
 @interface FilterSearchPage ()
 
+@property (nonatomic, strong) UIButton *searchLabel;
+
 @end
 
 @implementation FilterSearchPage
 
+@synthesize searchLabel = _searchLabel;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = NSLocalizedString(@"Filter Search", @"Filter");
+    NSArray *filterOptions = [NSArray arrayWithObjects:@"Posts", @"Users", nil];
+    
+    UISegmentedControl *segmentfilter = [[UISegmentedControl alloc] initWithItems:filterOptions];
+    segmentfilter.frame = CGRectMake(0, 0, self.view.frame.size.width/3, self.navigationController.toolbar.frame.size.height/1.5);
+    segmentfilter.selectedSegmentIndex = 0;
+    
+    [segmentfilter addTarget:self action:@selector(filterSearchOption:) forControlEvents:UIControlEventValueChanged];
+
+    self.navigationItem.titleView = segmentfilter;
+    
+    //self.navigationItem.title = NSLocalizedString(@"Filter Search", @"Filter");
     
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
     
@@ -44,8 +58,7 @@
     float buttonWidth =  self.view.frame.size.width;
     float buttonHeight = 28;
     float buttonX = (self.view.frame.size.width - buttonWidth)/2;
-    
-    
+
 
     
     UITextField *searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(xPos, yPos, width, height)];
@@ -82,11 +95,30 @@
     
     
     mainView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
+    mainView.showsVerticalScrollIndicator = NO;
     
     mainView.delegate = self;
     mainView.dataSource = self;
     
     [self.view addSubview:mainView];
+    
+    
+    searchPicker = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    searchPicker.backgroundColor = [UIColor whiteColor];
+    
+    _searchLabel = [[UIButton alloc] initWithFrame: CGRectMake(buttonX, yPos, buttonWidth, buttonHeight)];
+    [_searchLabel setTitleColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0] forState: UIControlStateNormal];
+    //[_searchLabel setTitleColor:[UIColor blueColor] forState: UIControlStateHighlighted];
+    [_searchLabel setTitle:@"Search Posts" forState:UIControlStateNormal];
+    //_searchLabel.backgroundColor = [UIColor yellowColor];
+    [_searchLabel setTag:150];
+    [_searchLabel addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+
+    
+   
+    [searchPicker addSubview:_searchLabel];
+    [mainView addSubview:searchPicker];
+    
 }
 
 - (IBAction)cancelButton{
@@ -110,6 +142,20 @@
     UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:vc2 animated:YES completion:nil];
     
+}
+
+- (void)filterSearchOption:(UISegmentedControl *)segment{
+    
+    if (segment.selectedSegmentIndex == 0) {
+        
+        [_searchLabel setTitle:@"Search Posts" forState:UIControlStateNormal];
+        NSLog(@"0");
+    }
+    else if(segment.selectedSegmentIndex == 1){
+        [_searchLabel setTitle:@"Search Users" forState:UIControlStateNormal];
+        NSLog(@"1");
+    }
+
 }
 
 
@@ -160,7 +206,7 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0)
-        return 22;
+        return 40;
     if (section == 1)
         return 20;
     if (section == 2)
@@ -259,6 +305,15 @@
     return cell;
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    CGRect newFrame = CGRectMake(0, self.navigationController.toolbar.frame.size.height, self.view.frame.size.width, self.navigationController.toolbar.frame.size.height - 5);
+    
+    newFrame.origin.x = 0;
+    newFrame.origin.y = mainView.contentOffset.y+(self.navigationController.toolbar.frame.size.height + 21);
+    searchPicker.frame = newFrame;
+
+}
 
 /*
 #pragma mark - Navigation

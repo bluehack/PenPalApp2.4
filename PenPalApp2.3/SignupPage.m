@@ -121,8 +121,7 @@ UIButton *birthButton = nil;
     emailTextField.delegate = self;
     
     
-  /*
-
+/*
     birthTextField = [[UITextField alloc] initWithFrame:CGRectMake(xPos, yPos, width, height)];
     birthTextField.borderStyle = UITextBorderStyleRoundedRect;
     birthTextField.textColor = [UIColor blackColor];
@@ -136,7 +135,7 @@ UIButton *birthButton = nil;
     birthTextField.borderStyle = UITextBorderStyleNone;
     birthTextField.tag = 104;
     birthTextField.delegate = self;
-    */
+*/
     
     birthButton = [[UIButton alloc] initWithFrame: CGRectMake(buttonX, yPos + 5, buttonWidth, buttonHeight)];
     [birthButton setTitleColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0] forState: UIControlStateNormal];

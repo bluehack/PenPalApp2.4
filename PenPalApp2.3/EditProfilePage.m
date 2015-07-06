@@ -58,6 +58,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+  
+    
     UIBarButtonItem *saveItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButton)];
     
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton)];
@@ -75,6 +77,9 @@
     float buttonWidth =  self.view.frame.size.width;
     float buttonHeight = 28;
     float buttonX = (self.view.frame.size.width - buttonWidth)/2;
+    
+
+
     
     _userLabel = [[UILabel alloc] initWithFrame: CGRectMake(12, yPos, 110, height)];
     [_userLabel setFont:[UIFont fontWithName:@"Helvetica" size:15]];
@@ -195,7 +200,7 @@
     [_loginOut setTitleColor:[UIColor blueColor] forState: UIControlStateHighlighted];
     [_loginOut setTitle:@"Log Out" forState:UIControlStateNormal];
     [_loginOut setTag:111];
-    [_loginOut addTarget:self action:@selector(logoutButton) forControlEvents:UIControlEventTouchUpInside];
+    [_loginOut addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
   
     _deleteAcct = [[UIButton alloc] initWithFrame: CGRectMake(buttonX, yPos + 5, buttonWidth, buttonHeight)];
     [_deleteAcct setTitleColor:[UIColor redColor] forState: UIControlStateNormal];
@@ -242,6 +247,10 @@
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    [self.mySpinner stopAnimating];
+    self.navigationItem.titleView = nil;
+    //self.navigationItem.title = NSLocalizedString(@"Edit", nil);
 }
 
 
@@ -320,14 +329,25 @@
 
 
 - (IBAction)uploadPic{
-    
+     /*
 UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
 imagePicker.delegate = self;
 imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 imagePicker.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage, nil];
-imagePicker.allowsEditing = NO;
+imagePicker.allowsEditing = YES; // NO
 
 [self presentViewController:imagePicker animated:YES completion:nil];
+     
+     */
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeSavedPhotosAlbum])
+    {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage,nil];
+        imagePicker.allowsEditing = YES;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
 
 }
 
@@ -369,13 +389,49 @@ imagePicker.allowsEditing = NO;
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    UIView *spn = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.navigationController.toolbar.frame.size.height)];
+    
+    self.mySpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.mySpinner.center = CGPointMake(10, 10);
+    self.mySpinner.hidesWhenStopped = YES;
+    
+    [spn addSubview:self.mySpinner];
+    self.navigationItem.titleView = spn;
+    [self.mySpinner startAnimating];
+    
+    
+    
+    
+    //self.navigationItem.title = NSLocalizedString(@"", nil);
+    [self.mySpinner startAnimating];
+    
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
     NSLog(@"Picked Image...");
     [self dismissViewControllerAnimated:YES completion:nil];
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        //UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
         
-        imageView.image = image;
+        CGFloat fin;
+        CGRect imageRect;
+        
+        if (image.size.width > image.size.height) {
+            CGFloat xAdjust = 0-((image.size.width - image.size.height)/2);
+            fin = image.size.height;
+            imageRect = CGRectMake(xAdjust, 0, image.size.width, image.size.height);
+        }
+        else{
+            CGFloat yAdjust = 0-((image.size.height - image.size.width)/2);
+            fin = image.size.width;
+            imageRect = CGRectMake(yAdjust, 0, image.size.width, image.size.height);
+        }
+        
+        UIGraphicsBeginImageContext( CGSizeMake(fin,fin) );
+        [image drawInRect:imageRect];
+        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        //imageView.image = image;
         
         NSLog(@"Picked Image...");
         
@@ -387,7 +443,21 @@ imagePicker.allowsEditing = NO;
                                            nil);
         */
         
-        NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+        /*
+         // orientation fix
+        if (image.imageOrientation == UIImageOrientationUp) {
+            // good
+        }
+        else{
+            UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
+            [image drawInRect:(CGRect){0, 0, image.size}];
+            UIImage *normalizedImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            image = normalizedImage;
+        }
+         */
+        
+        NSData *imageData = UIImageJPEGRepresentation(newImage, 0.5);
         
         if (imageData != nil)
         {
@@ -480,8 +550,10 @@ imagePicker.allowsEditing = NO;
 
 - (IBAction)logoutButton{
     
-    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+   // NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+   // [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        
+   //[[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"logginout"];
     
     /*
     NSDictionary * dict = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
@@ -492,13 +564,17 @@ imagePicker.allowsEditing = NO;
    // [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"loggedIn"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    InitView *vc = [[InitView alloc] init];
-    UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
-    [appDelegate.window setRootViewController:vc2];
+   // AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+   // InitView *vc = [[InitView alloc] init];
+   // UINavigationController *vc2 = [[UINavigationController alloc] initWithRootViewController:vc];
+   // [appDelegate.window setRootViewController:vc2];
+    
+     [self dismissViewControllerAnimated:YES completion:nil];
     
     
 }
+
+
 
 - (IBAction)changePass{
     

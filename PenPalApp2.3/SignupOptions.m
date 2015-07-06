@@ -43,17 +43,12 @@ NSArray *gV_regions = nil;
     
     //[self performSelector:@selector(doScrolling) withObject:nil afterDelay:0.3];
     
-    
     mainView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     mainView.delegate = self;
     mainView.dataSource = self;
     
     [self.view addSubview:mainView];
-    
-
-    
-
     
     self.view.backgroundColor = [UIColor grayColor];
     
@@ -394,6 +389,16 @@ NSArray *gV_regions = nil;
     }
     
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    if (self.completionBlock) {
+        
+        NSString *data = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+    
+        self.completionBlock(data);
+        
+        NSLog(@"Data: %@", data);
+        
+    }
     
     [self dismissViewControllerAnimated:YES completion:nil];
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];

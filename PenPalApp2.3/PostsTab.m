@@ -28,6 +28,20 @@
     self.navigationItem.leftBarButtonItem = refreshItem;
     self.navigationItem.rightBarButtonItem = editItem;
     
+    float yPos = (self.view.frame.size.height - 28)/2;
+    float buttonWidth =  self.view.frame.size.width;
+    float buttonHeight = 28;
+    float buttonX = (self.view.frame.size.width - buttonWidth)/2;
+    
+    
+    UIButton *postBTN = [[UIButton alloc] initWithFrame: CGRectMake(buttonX, yPos, buttonWidth, buttonHeight)];
+    [postBTN setTitleColor:[UIColor colorWithRed:30/255.0 green:144/255.0 blue:255/255.0 alpha:1.0] forState: UIControlStateNormal];
+    [postBTN setTitleColor:[UIColor blueColor] forState: UIControlStateHighlighted];
+    [postBTN setTitle:@"Here is where users can make posts" forState:UIControlStateNormal];
+    [postBTN setTag:100];
+    [postBTN addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:postBTN];
+    
 }
 
 - (IBAction)addButton{

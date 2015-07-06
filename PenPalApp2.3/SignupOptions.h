@@ -22,6 +22,9 @@ extern NSArray *gV_regions;
 
 - (IBAction)cancelButton;
 
+@property (nonatomic, copy) void (^completionBlock)(NSString *data);
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 
 @property(nonatomic, readonly) NSString *localizedTitle;
 

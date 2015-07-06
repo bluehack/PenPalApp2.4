@@ -13,6 +13,7 @@
 #import "MessagesTab.h"
 #import "PostsTab.h"
 #import "ProfileTab.h"
+#import "BOEditProfile.h"
 
 @import Foundation;
 
@@ -37,9 +38,14 @@
     VC3.title = NSLocalizedString(@"Posts", @"Posts");
     UINavigationController *VC3Navigation = [[UINavigationController alloc] initWithRootViewController:VC3];
     
+    //BOEditProfile *VC3 = [[BOEditProfile alloc] init];
+    //VC3.title = NSLocalizedString(@"Posts", @"Posts");
+    //UINavigationController *VC3Navigation = [[UINavigationController alloc] initWithRootViewController:VC3];
+    
     ProfileTab *VC4 = [[ProfileTab alloc] init];
     VC4.title = NSLocalizedString(@"Profile", @"Profile");
     UINavigationController *VC4Navigation = [[UINavigationController alloc] initWithRootViewController:VC4];
+    
     
     NSArray* controllers = [NSArray arrayWithObjects:VC1Navigation, VC2Navigation, VC3Navigation, VC4Navigation, nil];
     self.viewControllers = controllers;
@@ -71,6 +77,7 @@
 }
 
 /*
+ 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -78,6 +85,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+ 
 */
 
 @end
